@@ -73,10 +73,8 @@
     <section id="about" class="about">
       <div class="about-inner">
         <img id="about-photo" class="about-photo" alt="Author" />
-        <div class="about-text">
-          <h2 id="about-heading" class="section-title"></h2>
-          <div id="about-paragraphs"></div>
-        </div>
+        <h2 id="about-heading" class="section-title"></h2>
+        <div id="about-paragraphs" class="about-text"></div>
       </div>
     </section>
   </main>
@@ -108,15 +106,17 @@
   <div id="detail-overlay" class="detail-overlay">
     <div class="detail-modal" role="dialog" aria-modal="true">
       <button id="detail-close" class="detail-close" aria-label="Close">✕</button>
-      <div class="detail-body">
-        <img id="detail-cover" class="detail-cover" alt="" />
-        <div class="detail-info">
-          <h3 id="detail-title"></h3>
-          <p id="detail-subtitle" class="detail-subtitle"></p>
-          <p id="detail-price" class="detail-price"></p>
-          <p id="detail-desc" class="detail-desc"></p>
-          <button id="detail-add" class="add-btn">Add to Order</button>
-        </div>
+      <div class="detail-stage" id="detail-stage">
+        <img id="detail-img" class="detail-img" alt="" />
+      </div>
+      <button id="detail-prev" class="detail-nav prev" aria-label="Previous image">&#8249;</button>
+      <button id="detail-next" class="detail-nav next" aria-label="Next image">&#8250;</button>
+      <div id="detail-dots" class="detail-dots"></div>
+      <div class="detail-info">
+        <h3 id="detail-title" class="detail-title"></h3>
+        <p id="detail-price" class="detail-price"></p>
+        <p id="detail-desc" class="detail-desc"></p>
+        <button id="detail-add" class="add-btn">Add to Order</button>
       </div>
     </div>
   </div>

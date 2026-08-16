@@ -123,7 +123,9 @@
   /* ---- book grid ---- */
   function renderBooks() {
     const grid = $("book-grid");
-    grid.innerHTML = BOOKS.map((b) => {
+    // Books with a cover first, empty ones last (stable — keeps original order within each group)
+    const ordered = [...BOOKS].sort((a, b) => (a.cover ? 0 : 1) - (b.cover ? 0 : 1));
+    grid.innerHTML = ordered.map((b) => {
       const title = t(b.title);
       const cover = b.cover
         ? `<img class="book-cover" src="${b.cover}" alt="${escapeHtml(title)}" data-open="${b.id}" />`
@@ -219,24 +221,51 @@
       `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(orderText())}`;
   }
 
-  /* ---- detail modal ---- */
-  let openDetailId = null;
+  /* ---- detail modal: front/back slider + click-to-zoom ---- */
+  let openDetailId = null, detailMedia = [], detailIndex = 0;
+  function showDetailImg() {
+    const img = $("detail-img"), stage = $("detail-stage");
+    img.classList.remove("zoomed"); stage.classList.remove("zoomed");
+    if (!detailMedia.length) { img.style.visibility = "hidden"; img.removeAttribute("src"); }
+    else { img.style.visibility = "visible"; img.src = detailMedia[detailIndex]; }
+    const multi = detailMedia.length > 1;
+    $("detail-prev").style.display = multi ? "" : "none";
+    $("detail-next").style.display = multi ? "" : "none";
+    $("detail-dots").innerHTML = multi
+      ? detailMedia.map((_, i) => `<span class="ddot${i === detailIndex ? " on" : ""}"></span>`).join("")
+      : "";
+  }
   function openDetail(id) {
     const b = byId(id);
     if (!b) return;
     openDetailId = id;
-    const cover = $("detail-cover");
-    if (b.cover) { cover.src = b.cover; cover.style.display = "block"; }
-    else { cover.removeAttribute("src"); cover.style.display = "none"; }
+    detailMedia = [b.cover, b.back].filter(Boolean);
+    detailIndex = 0;
     $("detail-title").textContent = t(b.title);
-    $("detail-subtitle").textContent = t(b.subtitle) || "";
     $("detail-price").textContent = priceText(b.price);
-    $("detail-desc").textContent = t(b.description) || "";
+    const desc = t(b.description);
+    $("detail-desc").textContent = desc || "";
+    $("detail-desc").style.display = desc ? "" : "none";
     $("detail-add").dataset.add = b.id;
     $("detail-add").textContent = t(STRINGS.addToOrder);
+    showDetailImg();
     $("detail-overlay").classList.add("open");
   }
-  function closeDetail() { openDetailId = null; $("detail-overlay").classList.remove("open"); }
+  function detailNav(dir) {
+    if (detailMedia.length < 2) return;
+    detailIndex = (detailIndex + dir + detailMedia.length) % detailMedia.length;
+    showDetailImg();
+  }
+  function toggleZoom() {
+    $("detail-img").classList.toggle("zoomed");
+    $("detail-stage").classList.toggle("zoomed");
+  }
+  function closeDetail() {
+    openDetailId = null;
+    $("detail-overlay").classList.remove("open");
+    $("detail-img").classList.remove("zoomed");
+    $("detail-stage").classList.remove("zoomed");
+  }
 
   /* ---- cart open/close ---- */
   function openCart() { $("cart-drawer").classList.add("open"); $("cart-overlay").classList.add("open"); }
@@ -289,7 +318,16 @@
     $("inquire-email").addEventListener("click", inquireEmail);
     $("detail-close").addEventListener("click", closeDetail);
     $("detail-overlay").addEventListener("click", (e) => { if (e.target.id === "detail-overlay") closeDetail(); });
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") { closeCart(); closeDetail(); } });
+    $("detail-prev").addEventListener("click", (e) => { e.stopPropagation(); detailNav(-1); });
+    $("detail-next").addEventListener("click", (e) => { e.stopPropagation(); detailNav(1); });
+    $("detail-img").addEventListener("click", (e) => { e.stopPropagation(); toggleZoom(); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") { closeCart(); closeDetail(); }
+      if ($("detail-overlay").classList.contains("open")) {
+        if (e.key === "ArrowLeft") detailNav(-1);
+        if (e.key === "ArrowRight") detailNav(1);
+      }
+    });
   }
 
   /* ---- start ---- */
