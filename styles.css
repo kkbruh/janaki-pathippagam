@@ -27,7 +27,7 @@ html { scroll-behavior: smooth; font-size: 19px; }
 
 body {
   margin: 0;
-  font-family: "Noto Serif", Georgia, serif;
+  font-family: "Noto Serif", "Noto Serif Tamil", Georgia, serif;
   color: var(--ink);
   /* Warm sanctum ground — soft lamp-lit glow at the top, sandstone below. */
   background:
@@ -37,7 +37,7 @@ body {
   line-height: 1.7;
 }
 
-h1, h2, h3 { font-family: "Marcellus", Georgia, serif; font-weight: 400; letter-spacing: 0.02em; }
+h1, h2, h3 { font-family: "Marcellus", "Noto Serif Tamil", Georgia, serif; font-weight: 400; letter-spacing: 0.02em; }
 
 img { max-width: 100%; display: block; }
 
@@ -62,8 +62,16 @@ img { max-width: 100%; display: block; }
   animation: glow 3.2s ease-in-out infinite;
 }
 .splash-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.splash-blessing { color: var(--gold-l); font-family: "Tiro Devanagari Hindi", serif; font-size: 1.7rem; margin: 0 0 18px; }
-.splash-enter { color: var(--gold); font-size: 1rem; letter-spacing: 0.14em; text-transform: uppercase; margin: 0; opacity: 0.85; }
+.splash-blessing { color: var(--gold-l); font-family: "Tiro Devanagari Hindi", "Noto Serif Tamil", serif; font-size: 1.7rem; margin: 0 0 18px; }
+.splash-choose { color: var(--gold-l); font-size: 1rem; letter-spacing: 0.04em; margin: 0 0 16px; opacity: 0.9; }
+.lang-choice { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.lang-enter {
+  cursor: pointer; border: 2px solid var(--gold);
+  background: transparent; color: var(--cream);
+  padding: 14px 26px; border-radius: 999px; font-size: 1.1rem; font-family: inherit;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.lang-enter:hover { background: var(--gold); color: var(--maroon-d); }
 @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 @keyframes glow {
   0%, 100% { box-shadow: 0 0 55px rgba(199,154,60,0.45), inset 0 0 40px rgba(92,20,20,0.35); }
@@ -80,9 +88,30 @@ img { max-width: 100%; display: block; }
   color: var(--cream);
   border-bottom: 3px solid var(--gold);
 }
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-logo { height: 52px; width: auto; border-radius: 8px; background: var(--cream); padding: 3px; }
 .brand-title { margin: 0; font-size: 1.55rem; color: var(--white); }
 .brand-tagline { margin: 2px 0 0; font-size: 0.85rem; color: var(--gold-l); font-style: italic; }
-.header-actions { display: flex; align-items: center; gap: 20px; }
+.header-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+
+/* Language toggle in the header */
+.lang-toggle { display: inline-flex; border: 1px solid var(--gold); border-radius: 999px; overflow: hidden; }
+.lang-opt {
+  cursor: pointer; border: none; background: transparent; color: var(--cream);
+  padding: 7px 14px; font-size: 0.95rem; font-family: inherit;
+}
+.lang-opt.active { background: var(--gold); color: var(--maroon-d); }
+
+/* Corner guardian images — ambient, non-interactive, faded into the page */
+.corner-accent {
+  position: fixed; bottom: 0; z-index: 5; width: 160px; height: auto;
+  pointer-events: none; opacity: 0.9;
+  -webkit-mask-image: radial-gradient(120% 120% at 50% 100%, #000 55%, transparent 85%);
+          mask-image: radial-gradient(120% 120% at 50% 100%, #000 55%, transparent 85%);
+}
+.corner-left { left: 0; }
+.corner-right { right: 0; }
+@media (max-width: 900px) { .corner-accent { display: none !important; } }
 .nav-link { color: var(--cream); text-decoration: none; font-size: 1.1rem; opacity: 0.9; padding: 6px 4px; }
 .nav-link:hover { opacity: 1; color: var(--gold-l); }
 .cart-btn {
