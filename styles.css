@@ -102,20 +102,22 @@ img { max-width: 100%; display: block; }
 }
 .lang-opt.active { background: var(--gold); color: var(--maroon-d); }
 
-/* Guardian saints flanking the hero, inner edges faded into the maroon */
+/* Guardian saints flanking the hero — width-capped so they can't overflow,
+   inner edges faded into the maroon so it reads seamlessly. */
 .hero-saint {
   position: absolute; bottom: 0; z-index: 1;
-  height: 100%; width: auto; pointer-events: none; opacity: 0.95;
+  width: min(24%, 300px); height: auto;
+  pointer-events: none; opacity: 0.92;
 }
 .hero-saint-left  { left: 0;
-  -webkit-mask-image: linear-gradient(to right, #000 45%, transparent 92%);
-          mask-image: linear-gradient(to right, #000 45%, transparent 92%); }
+  -webkit-mask-image: linear-gradient(to right, #000 40%, transparent 96%);
+          mask-image: linear-gradient(to right, #000 40%, transparent 96%); }
 .hero-saint-right { right: 0;
-  -webkit-mask-image: linear-gradient(to left, #000 45%, transparent 92%);
-          mask-image: linear-gradient(to left, #000 45%, transparent 92%); }
+  -webkit-mask-image: linear-gradient(to left, #000 40%, transparent 96%);
+          mask-image: linear-gradient(to left, #000 40%, transparent 96%); }
 @media (max-width: 760px) {
-  /* On phones: smaller, more faded, so the text stays clearly readable */
-  .hero-saint { height: 62%; opacity: 0.4; }
+  /* On phones: fainter backdrop so the welcome text stays clearly readable */
+  .hero-saint { width: 40%; opacity: 0.3; }
 }
 .nav-link { color: var(--cream); text-decoration: none; font-size: 1.1rem; opacity: 0.9; padding: 6px 4px; }
 .nav-link:hover { opacity: 1; color: var(--gold-l); }
@@ -144,12 +146,9 @@ img { max-width: 100%; display: block; }
   border-bottom: 3px solid var(--gold);
   position: relative;
   overflow: hidden;
-  min-height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-height: 420px;
 }
-.hero-content { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
+.hero-content { position: relative; z-index: 2; max-width: 620px; margin: 0 auto; }
 .hero-om {
   font-family: "Tiro Devanagari Hindi", serif; color: var(--gold-l);
   font-size: 2.4rem; margin: 0 0 6px; line-height: 1;
