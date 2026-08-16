@@ -113,9 +113,7 @@
 
   /* ---- splash (temple door) ---- */
   function paintSplash() {
-    const img = $("splash-img");
-    img.src = SPLASH.image;
-    img.alt = "";
+    // Door now uses the fixed emblem + typography; only the (optional) blessing is dynamic.
     $("splash-blessing").textContent = t(SPLASH.blessing);
   }
   function enter() { $("splash").classList.add("hide"); }
