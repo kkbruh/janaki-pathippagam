@@ -19,7 +19,10 @@
     try { return JSON.parse(localStorage.getItem(CART_KEY)) || {}; }
     catch { return {}; }
   }
-  function save() { localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
+  function save() {
+    try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
+    catch { /* private mode / storage disabled — cart still works for this visit */ }
+  }
 
   /* ---- static text from config ---- */
   function paintStaticText() {
@@ -38,12 +41,15 @@
 
   /* ---- splash ---- */
   function runSplash() {
+    const splash = $("splash");
     const img = $("splash-img");
     img.src = SPLASH.image;
     img.alt = "Blessing";
     $("splash-blessing").textContent = SPLASH.blessing || "";
-    // Fade out after a short, respectful pause.
-    setTimeout(() => $("splash").classList.add("hide"), 1800);
+    // Fade out on its own after a short pause — or let the visitor tap to skip.
+    const dismiss = () => splash.classList.add("hide");
+    setTimeout(dismiss, 2200);
+    splash.addEventListener("click", dismiss);
   }
 
   /* ---- render book grid ---- */
