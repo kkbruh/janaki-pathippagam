@@ -17,6 +17,7 @@
   --white:    #fffdf9;
   --shadow:   0 6px 24px rgba(74, 30, 12, 0.12);
   --radius:   14px;
+  --btn-radius: 999px;
   --maxw:     1120px;
 }
 
@@ -25,6 +26,7 @@
 /* Larger base size for older / mixed-age readers — everything in rem scales up. */
 html { scroll-behavior: smooth; font-size: 19px; }
 
+html, body { overflow-x: hidden; max-width: 100%; }
 body {
   margin: 0;
   font-family: "Noto Serif", "Noto Serif Tamil", Georgia, serif;
@@ -175,7 +177,36 @@ img { max-width: 100%; display: block; }
 .hero-cta:hover { background: var(--gold-l); }
 
 /* ===== Shop ===== */
-.shop { max-width: var(--maxw); margin: 0 auto; padding: 56px 24px; }
+.shop { position: relative; overflow: hidden; padding: 56px 0; }
+.shop-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+/* Kolam decorations — white sikku kolam on a maroon band, one per section (right edge) */
+.shop::after, .about::after, .site-footer::after {
+  content: ""; position: absolute; top: 0; right: 0; height: 100%;
+  pointer-events: none; box-shadow: -6px 0 18px rgba(0,0,0,0.12);
+}
+.shop::after {
+  width: 86px; opacity: 0.95; background-color: var(--maroon-d);
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2786%27%20height%3D%27120%27%20viewBox%3D%270%200%2086%20120%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%2523fff%27%20stroke-width%3D%272.3%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Ccircle%20cx%3D%2743.0%27%20cy%3D%2723.0%27%20r%3D%278.5%27%2F%3E%3Ccircle%20cx%3D%2743.0%27%20cy%3D%2723.0%27%20r%3D%271.7%27%20fill%3D%27%2523fff%27%20stroke%3D%27none%27%2F%3E%3Ccircle%20cx%3D%2753.6%27%20cy%3D%2727.4%27%20r%3D%278.5%27%2F%3E%3Ccircle%20cx%3D%2753.6%27%20cy%3D%2727.4%27%20r%3D%271.7%27%20fill%3D%27%2523fff%27%20stroke%3D%27none%27%2F%3E%3Ccircle%20cx%3D%2758.0%27%20cy%3D%2738.0%27%20r%3D%278.5%27%2F%3E%3Ccircle%20cx%3D%2758.0%27%20cy%3D%2738.0%27%20r%3D%271.7%27%20fill%3D%27%2523fff%27%20stroke%3D%27none%27%2F%3E%3Ccircle%20cx%3D%2753.6%27%20cy%3D%2748.6%27%20r%3D%278.5%27%2F%3E%3Ccircle%20cx%3D%2753.6%27%20cy%3D%2748.6%27%20r%3D%271.7%27%20fill%3D%27%2523fff%27%20stroke%3D%27none%27%2F%3E%3Ccircle%20cx%3D%2743.0%27%20cy%3D%2753.0%27%20r%3D%278.5%27%2F%3E%3Ccircle%20cx%3D%2743.0%27%20cy%3D%2753.0%27%20r%3D%271.7%27%20fill%3D%27%2523fff%27%20stroke%3D%27none%27%2F%3E%3Ccircle%20cx%3D%2732.4%27%20cy%3D%2748.6%27%20r%3D%278.5%27%2F%3E%3Ccircle%20cx%3D%2732.4%27%20cy%3D%2748.6%27%20r%3D%271.7%27%20fill%3D%27%2523fff%27%20stroke%3D%27none%27%2F%3E%3Ccircle%20cx%3D%2728.0%27%20cy%3D%2738.0%27%20r%3D%278.5%27%2F%3E%3Ccircle%20cx%3D%2728.0%27%20cy%3D%2738.0%27%20r%3D%271.7%27%20fill%3D%27%2523fff%27%20stroke%3D%27none%27%2F%3E%3Ccircle%20cx%3D%2732.4%27%20cy%3D%2727.4%27%20r%3D%278.5%27%2F%3E%3Ccircle%20cx%3D%2732.4%27%20cy%3D%2727.4%27%20r%3D%271.7%27%20fill%3D%27%2523fff%27%20stroke%3D%27none%27%2F%3E%3Ccircle%20cx%3D%2743.0%27%20cy%3D%2738.0%27%20r%3D%271.7%27%20fill%3D%27%2523fff%27%20stroke%3D%27none%27%2F%3E%3Cpath%20d%3D%27M43.0%2060.5%20C%2052.0%2077%2034.0%20103%2043.0%20120%27%2F%3E%3Ccircle%20cx%3D%2743.0%27%20cy%3D%2790.2%27%20r%3D%271.7%27%20fill%3D%27%2523fff%27%20stroke%3D%27none%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-repeat: repeat-y; background-position: center top;
+  background-size: 86px auto;
+}
+.about::after {
+  width: 70px; opacity: 0.9; background-color: var(--maroon-d);
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2770%27%20height%3D%2796%27%20viewBox%3D%270%200%2070%2096%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%2523fff%27%20stroke-width%3D%272.3%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Ccircle%20cx%3D%2735.0%27%20cy%3D%2719.0%27%20r%3D%279%27%2F%3E%3Ccircle%20cx%3D%2735.0%27%20cy%3D%2719.0%27%20r%3D%271.7%27%20fill%3D%27%2523fff%27%20stroke%3D%27none%27%2F%3E%3Ccircle%20cx%3D%2750.0%27%20cy%3D%2734.0%27%20r%3D%279%27%2F%3E%3Ccircle%20cx%3D%2750.0%27%20cy%3D%2734.0%27%20r%3D%271.7%27%20fill%3D%27%2523fff%27%20stroke%3D%27none%27%2F%3E%3Ccircle%20cx%3D%2735.0%27%20cy%3D%2749.0%27%20r%3D%279%27%2F%3E%3Ccircle%20cx%3D%2735.0%27%20cy%3D%2749.0%27%20r%3D%271.7%27%20fill%3D%27%2523fff%27%20stroke%3D%27none%27%2F%3E%3Ccircle%20cx%3D%2720.0%27%20cy%3D%2734.0%27%20r%3D%279%27%2F%3E%3Ccircle%20cx%3D%2720.0%27%20cy%3D%2734.0%27%20r%3D%271.7%27%20fill%3D%27%2523fff%27%20stroke%3D%27none%27%2F%3E%3Ccircle%20cx%3D%2735.0%27%20cy%3D%2734.0%27%20r%3D%271.7%27%20fill%3D%27%2523fff%27%20stroke%3D%27none%27%2F%3E%3Cpath%20d%3D%27M20.0%2034%20L35.0%2019%20L50.0%2034%20L35.0%2049%20Z%27%2F%3E%3Cpath%20d%3D%27M35.0%2057%20C%2044.0%2068%2026.0%2085%2035.0%2096%27%2F%3E%3Ccircle%20cx%3D%2735.0%27%20cy%3D%2776.5%27%20r%3D%271.7%27%20fill%3D%27%2523fff%27%20stroke%3D%27none%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-repeat: repeat-y; background-position: center top;
+  background-size: 70px auto;
+}
+.site-footer::after {
+  width: 46px; opacity: 0.9; background-color: var(--maroon-d);
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2746%27%20height%3D%2764%27%20viewBox%3D%270%200%2046%2064%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%2523fff%27%20stroke-width%3D%272.3%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Ccircle%20cx%3D%2723.0%27%20cy%3D%2720%27%20r%3D%279%27%2F%3E%3Ccircle%20cx%3D%2723.0%27%20cy%3D%2720.0%27%20r%3D%271.7%27%20fill%3D%27%2523fff%27%20stroke%3D%27none%27%2F%3E%3Cpath%20d%3D%27M23.0%2029%20C%2032.0%2038%2014.0%2052%2023.0%2061%27%2F%3E%3Ccircle%20cx%3D%2723.0%27%20cy%3D%2745.0%27%20r%3D%271.7%27%20fill%3D%27%2523fff%27%20stroke%3D%27none%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-repeat: repeat-y; background-position: center top;
+  background-size: 46px auto;
+}
+.about, .site-footer { position: relative; overflow: hidden; }
+@media (max-width: 960px) {
+  .shop::after, .about::after, .site-footer::after { display: none; }
+}
 .section-title {
   text-align: center; font-size: 2rem; color: var(--maroon);
   margin: 0 0 8px; position: relative;
@@ -342,4 +373,57 @@ img { max-width: 100%; display: block; }
   .hero-heading { font-size: 1.9rem; }
   .about-inner { flex-direction: column; text-align: center; }
   .about-text .section-title, .about-text .section-title::after { text-align: center; margin-left: auto; margin-right: auto; }
+}
+
+
+/* ===== Unified buttons (one class, consistent radius + behaviour) ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: inherit; font-weight: 600; font-size: 1.05rem; line-height: 1;
+  padding: 13px 26px; min-height: 50px;
+  border: 2px solid transparent; border-radius: var(--btn-radius);
+  cursor: pointer; text-decoration: none; text-align: center;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn--gold    { background: var(--gold);   color: var(--maroon-d); border-color: var(--gold); }
+.btn--gold:hover    { background: var(--gold-l); border-color: var(--gold-l); }
+.btn--primary { background: var(--maroon); color: var(--cream);    border-color: var(--maroon); }
+.btn--primary:hover { background: var(--saffron); border-color: var(--saffron); }
+.btn--outline { background: transparent;   color: var(--cream);    border-color: var(--gold); }
+.btn--outline:hover { background: var(--gold); color: var(--maroon-d); }
+.btn--wa      { background: #25d366;        color: #fff;           border-color: #25d366; }
+.btn--wa:hover      { background: #1eb355; border-color: #1eb355; }
+.btn--block   { width: 100%; }
+
+/* ===== Mobile (phones): compact header + denser 2-up book grid ===== */
+@media (max-width: 600px) {
+  /* Header: compact — brand + controls; wraps to at most 2 rows, never overflows */
+  .site-header { padding: 9px 12px; gap: 8px 12px; }
+  .brand { gap: 8px; min-width: 0; flex: 0 1 auto; }
+  .brand-text { min-width: 0; }
+  .brand-logo { height: 38px; flex-shrink: 0; }
+  .brand-title { font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .brand-tagline { display: none; }
+  .header-actions { gap: 8px; flex-wrap: nowrap; flex-shrink: 0; }
+  .nav-link { display: none; }
+  .lang-opt { padding: 6px 9px; font-size: 0.82rem; }
+  .cart-btn { padding: 6px 10px; font-size: 0.95rem; }
+
+  /* Books: two per row, smaller — so 2–3 rows show per screen */
+  .shop { padding: 28px 0; }
+  .shop-inner { padding: 0 12px; }
+  .section-title { font-size: 1.5rem; }
+  .book-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+  .book-card { min-width: 0; }
+  .book-body { padding: 10px 11px 12px; }
+  .book-title { font-size: 0.95rem; }
+  .book-subtitle { font-size: 0.78rem; }
+  .book-price { font-size: 1rem; margin: 6px 0 10px; }
+  .book-card .btn { min-height: 40px; padding: 9px 8px; font-size: 0.88rem; }
+
+  /* Hero a touch shorter on phones */
+  .hero { min-height: 340px; padding: 44px 18px; }
+  .hero-heading { font-size: 1.7rem; }
 }

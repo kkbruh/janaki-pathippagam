@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Noto+Serif+Tamil:wght@400;600&family=Tiro+Tamil:ital@0;1&family=Kavivanar&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <link rel="stylesheet" href="styles.css?v=10" />
 </head>
 <body>
 
@@ -21,8 +21,8 @@
       <p id="splash-blessing" class="splash-blessing"></p>
       <p class="splash-choose">மொழியைத் தேர்ந்தெடுக்கவும் &middot; Choose your language</p>
       <div class="lang-choice">
-        <button class="lang-enter" data-lang="ta">தமிழ்</button>
-        <button class="lang-enter" data-lang="en">English</button>
+        <button class="btn btn--outline" data-lang="ta">தமிழ்</button>
+        <button class="btn btn--outline" data-lang="en">English</button>
       </div>
     </div>
   </div>
@@ -58,15 +58,17 @@
       <p class="hero-om">&#2384;</p>
       <h2 id="hero-heading" class="hero-heading"></h2>
       <p id="hero-sub" class="hero-sub"></p>
-      <a href="#books" id="hero-cta" class="hero-cta"></a>
+      <a href="#books" id="hero-cta" class="hero-cta btn btn--gold"></a>
     </div>
   </section>
 
   <!-- ===== Books shop ===== -->
   <main>
     <section id="books" class="shop">
-      <h2 id="collection-title" class="section-title"></h2>
-      <div id="book-grid" class="book-grid"><!-- books injected by app.js --></div>
+      <div class="shop-inner">
+        <h2 id="collection-title" class="section-title"></h2>
+        <div id="book-grid" class="book-grid"><!-- books injected by app.js --></div>
+      </div>
     </section>
 
     <!-- ===== About (bottom of page) ===== -->
@@ -97,8 +99,8 @@
         <span id="cart-total"></span>
       </div>
       <p id="cart-note" class="cart-note"></p>
-      <button id="inquire-whatsapp" class="inquire-btn wa"></button>
-      <button id="inquire-email" class="inquire-btn email"></button>
+      <button id="inquire-whatsapp" class="btn btn--wa btn--block"></button>
+      <button id="inquire-email" class="btn btn--primary btn--block"></button>
     </div>
   </aside>
 
@@ -116,12 +118,12 @@
         <h3 id="detail-title" class="detail-title"></h3>
         <p id="detail-price" class="detail-price"></p>
         <p id="detail-desc" class="detail-desc"></p>
-        <button id="detail-add" class="add-btn">Add to Order</button>
+        <button id="detail-add" class="add-btn btn btn--primary">Add to Order</button>
       </div>
     </div>
   </div>
 
-  <script src="config.js?v=3"></script>
-  <script src="app.js?v=3"></script>
+  <script src="config.js?v=10"></script>
+  <script src="app.js?v=10"></script>
 </body>
 </html>

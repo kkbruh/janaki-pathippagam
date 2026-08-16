@@ -135,7 +135,7 @@
             <h3 class="book-title" data-open="${b.id}">${escapeHtml(title)}</h3>
             <p class="book-subtitle">${escapeHtml(t(b.subtitle) || "")}</p>
             <p class="book-price">${escapeHtml(priceText(b.price))}</p>
-            <button class="add-btn" data-add="${b.id}">${t(STRINGS.addToOrder)}</button>
+            <button class="add-btn btn btn--primary" data-add="${b.id}">${t(STRINGS.addToOrder)}</button>
           </div>
         </article>`;
     }).join("");
@@ -335,4 +335,8 @@
   renderBooks();
   renderCart();
   bind();
+
+  // Optional deep-link: ?lang=ta|en enters directly in that language (skips the door).
+  const _l = new URLSearchParams(location.search).get("lang");
+  if (_l === "en" || _l === "ta") { setLang(_l); enter(); }
 })();
