@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Devotional Books</title>
+  <meta name="description" content="Devotional Hindu books — available online." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== Opening deity splash (fades away on load) ===== -->
+  <div id="splash" class="splash">
+    <div class="splash-inner">
+      <img id="splash-img" class="splash-img" alt="" />
+      <p id="splash-blessing" class="splash-blessing"></p>
+    </div>
+  </div>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="brand">
+      <h1 id="site-title" class="brand-title"></h1>
+      <p id="site-tagline" class="brand-tagline"></p>
+    </div>
+    <nav class="header-actions">
+      <a href="#books" class="nav-link">Books</a>
+      <a href="#about" class="nav-link">About</a>
+      <button id="cart-toggle" class="cart-btn" aria-label="Open cart">
+        <span class="cart-icon">🛒</span>
+        <span id="cart-count" class="cart-count">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2 id="hero-heading" class="hero-heading"></h2>
+      <p class="hero-sub">Browse the collection below. Add the books you want, then send your order over WhatsApp or email.</p>
+      <a href="#books" class="hero-cta">View the collection</a>
+    </div>
+  </section>
+
+  <!-- ===== Books shop ===== -->
+  <main>
+    <section id="books" class="shop">
+      <h2 class="section-title">The Collection</h2>
+      <div id="book-grid" class="book-grid"><!-- books injected by app.js --></div>
+    </section>
+
+    <!-- ===== About (bottom of page) ===== -->
+    <section id="about" class="about">
+      <div class="about-inner">
+        <img id="about-photo" class="about-photo" alt="Author" />
+        <div class="about-text">
+          <h2 id="about-heading" class="section-title"></h2>
+          <div id="about-paragraphs"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p id="footer-line"></p>
+  </footer>
+
+  <!-- ===== Cart drawer ===== -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+  <aside id="cart-drawer" class="cart-drawer" aria-label="Your cart">
+    <div class="cart-head">
+      <h3>Your Order</h3>
+      <button id="cart-close" class="cart-close" aria-label="Close cart">✕</button>
+    </div>
+    <div id="cart-items" class="cart-items"><!-- items injected --></div>
+    <div class="cart-foot">
+      <div class="cart-total-row">
+        <span>Total</span>
+        <span id="cart-total"></span>
+      </div>
+      <p class="cart-note">No payment online. Send your order and we'll confirm availability and delivery.</p>
+      <button id="inquire-whatsapp" class="inquire-btn wa">Inquire on WhatsApp</button>
+      <button id="inquire-email" class="inquire-btn email">Inquire by Email</button>
+    </div>
+  </aside>
+
+  <!-- ===== Book detail modal ===== -->
+  <div id="detail-overlay" class="detail-overlay">
+    <div class="detail-modal" role="dialog" aria-modal="true">
+      <button id="detail-close" class="detail-close" aria-label="Close">✕</button>
+      <div class="detail-body">
+        <img id="detail-cover" class="detail-cover" alt="" />
+        <div class="detail-info">
+          <h3 id="detail-title"></h3>
+          <p id="detail-subtitle" class="detail-subtitle"></p>
+          <p id="detail-price" class="detail-price"></p>
+          <p id="detail-desc" class="detail-desc"></p>
+          <button id="detail-add" class="add-btn">Add to Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
