@@ -36,6 +36,7 @@
     orderName:   { en: "My name:", ta: "என் பெயர்:" },
     orderAddr:   { en: "Delivery address:", ta: "டெலிவரி முகவரி:" },
     orderPhone:  { en: "Phone:", ta: "தொலைபேசி:" },
+    priceAsk:    { en: "Price on request", ta: "விலை கேட்டு அறியவும்" },
   };
 
   /* ---- language state (persisted) ---- */
@@ -50,6 +51,8 @@
   }
 
   const money = (n) => `${SITE.currency}${Number(n).toLocaleString("en-IN")}`;
+  // Price for display: real price, or "Price on request" when not set (0/blank).
+  const priceText = (n) => (n ? money(n) : t(STRINGS.priceAsk));
   const $ = (id) => document.getElementById(id);
   const byId = (id) => BOOKS.find((b) => b.id === id);
 
@@ -131,7 +134,7 @@
           <div class="book-body">
             <h3 class="book-title" data-open="${b.id}">${escapeHtml(title)}</h3>
             <p class="book-subtitle">${escapeHtml(t(b.subtitle) || "")}</p>
-            <p class="book-price">${money(b.price)}</p>
+            <p class="book-price">${escapeHtml(priceText(b.price))}</p>
             <button class="add-btn" data-add="${b.id}">${t(STRINGS.addToOrder)}</button>
           </div>
         </article>`;
@@ -164,7 +167,7 @@
         <div class="cart-row">
           <div class="cart-row-main">
             <p class="cart-row-title">${escapeHtml(t(b.title))}</p>
-            <p class="cart-row-price">${money(b.price)} ${escapeHtml(t(STRINGS.each))}</p>
+            <p class="cart-row-price">${escapeHtml(b.price ? money(b.price) + " " + t(STRINGS.each) : t(STRINGS.priceAsk))}</p>
             <button class="cart-remove" data-remove="${id}">${t(STRINGS.remove)}</button>
           </div>
           <div class="qty">
@@ -192,7 +195,7 @@
     const lines = ids.map((id) => {
       const b = byId(id), qty = cart[id], sub = b.price * qty;
       total += sub;
-      return `• ${t(b.title)} × ${qty} — ${money(sub)}`;
+      return `• ${t(b.title)} × ${qty} — ${b.price ? money(sub) : t(STRINGS.priceAsk)}`;
     });
     const site = t(SITE.siteTitle);
     const intro = LANG === "ta"
@@ -227,7 +230,7 @@
     else { cover.removeAttribute("src"); cover.style.display = "none"; }
     $("detail-title").textContent = t(b.title);
     $("detail-subtitle").textContent = t(b.subtitle) || "";
-    $("detail-price").textContent = money(b.price);
+    $("detail-price").textContent = priceText(b.price);
     $("detail-desc").textContent = t(b.description) || "";
     $("detail-add").dataset.add = b.id;
     $("detail-add").textContent = t(STRINGS.addToOrder);
