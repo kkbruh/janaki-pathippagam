@@ -50,18 +50,13 @@ img { max-width: 100%; display: block; }
   cursor: pointer;
 }
 .splash.hide { opacity: 0; visibility: hidden; }
-.splash-inner { text-align: center; padding: 24px; animation: rise 1.1s ease; }
-/* Deity set within an arched temple niche, lit by a warm lamp glow. */
-.splash-arch {
-  width: 230px; height: 290px; margin: 0 auto 22px;
-  border-radius: 115px 115px 16px 16px;
-  border: 4px solid var(--gold);
-  overflow: hidden;
-  background: var(--cream-d);
-  box-shadow: 0 0 70px rgba(199,154,60,0.55), inset 0 0 40px rgba(92,20,20,0.35);
-  animation: glow 3.2s ease-in-out infinite;
+.splash-inner { text-align: center; padding: 24px; animation: rise 1.1s ease; max-width: 560px; }
+/* Deity melts into the maroon — feathered edges, no frame, no glow. */
+.splash-img {
+  width: min(74vw, 440px); height: auto; display: block; margin: 0 auto 20px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 46%, #000 50%, transparent 86%);
+          mask-image: radial-gradient(ellipse at 50% 46%, #000 50%, transparent 86%);
 }
-.splash-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .splash-blessing { color: var(--gold-l); font-family: "Tiro Devanagari Hindi", "Noto Serif Tamil", serif; font-size: 1.7rem; margin: 0 0 18px; }
 .splash-choose { color: var(--gold-l); font-size: 1rem; letter-spacing: 0.04em; margin: 0 0 16px; opacity: 0.9; }
 .lang-choice { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
