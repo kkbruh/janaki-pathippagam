@@ -102,17 +102,21 @@ img { max-width: 100%; display: block; }
 }
 .lang-opt.active { background: var(--gold); color: var(--maroon-d); }
 
-/* Header groups so the saints sit at the two ends of the title bar */
-.hgroup { display: flex; align-items: center; gap: 14px; }
-/* Guardian saints as round medallions framing the title bar */
-.header-saint {
-  width: 58px; height: 58px; border-radius: 50%;
-  object-fit: cover; object-position: 50% 22%;
-  border: 2px solid var(--gold);
-  box-shadow: 0 0 0 3px rgba(199,154,60,0.18);
-  flex-shrink: 0;
+/* Guardian saints flanking the hero, inner edges faded into the maroon */
+.hero-saint {
+  position: absolute; bottom: 0; z-index: 1;
+  height: 100%; width: auto; pointer-events: none; opacity: 0.95;
 }
-@media (max-width: 700px) { .header-saint { display: none; } }
+.hero-saint-left  { left: 0;
+  -webkit-mask-image: linear-gradient(to right, #000 45%, transparent 92%);
+          mask-image: linear-gradient(to right, #000 45%, transparent 92%); }
+.hero-saint-right { right: 0;
+  -webkit-mask-image: linear-gradient(to left, #000 45%, transparent 92%);
+          mask-image: linear-gradient(to left, #000 45%, transparent 92%); }
+@media (max-width: 760px) {
+  /* On phones: smaller, more faded, so the text stays clearly readable */
+  .hero-saint { height: 62%; opacity: 0.4; }
+}
 .nav-link { color: var(--cream); text-decoration: none; font-size: 1.1rem; opacity: 0.9; padding: 6px 4px; }
 .nav-link:hover { opacity: 1; color: var(--gold-l); }
 .cart-btn {
@@ -138,7 +142,14 @@ img { max-width: 100%; display: block; }
   text-align: center;
   padding: 60px 24px 64px;
   border-bottom: 3px solid var(--gold);
+  position: relative;
+  overflow: hidden;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.hero-content { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
 .hero-om {
   font-family: "Tiro Devanagari Hindi", serif; color: var(--gold-l);
   font-size: 2.4rem; margin: 0 0 6px; line-height: 1;
