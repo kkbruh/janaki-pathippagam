@@ -102,16 +102,17 @@ img { max-width: 100%; display: block; }
 }
 .lang-opt.active { background: var(--gold); color: var(--maroon-d); }
 
-/* Corner guardian images — ambient, non-interactive, faded into the page */
-.corner-accent {
-  position: fixed; bottom: 0; z-index: 5; width: 160px; height: auto;
-  pointer-events: none; opacity: 0.9;
-  -webkit-mask-image: radial-gradient(120% 120% at 50% 100%, #000 55%, transparent 85%);
-          mask-image: radial-gradient(120% 120% at 50% 100%, #000 55%, transparent 85%);
+/* Header groups so the saints sit at the two ends of the title bar */
+.hgroup { display: flex; align-items: center; gap: 14px; }
+/* Guardian saints as round medallions framing the title bar */
+.header-saint {
+  width: 58px; height: 58px; border-radius: 50%;
+  object-fit: cover; object-position: 50% 22%;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 0 3px rgba(199,154,60,0.18);
+  flex-shrink: 0;
 }
-.corner-left { left: 0; }
-.corner-right { right: 0; }
-@media (max-width: 900px) { .corner-accent { display: none !important; } }
+@media (max-width: 700px) { .header-saint { display: none; } }
 .nav-link { color: var(--cream); text-decoration: none; font-size: 1.1rem; opacity: 0.9; padding: 6px 4px; }
 .nav-link:hover { opacity: 1; color: var(--gold-l); }
 .cart-btn {

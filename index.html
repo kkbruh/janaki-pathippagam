@@ -29,25 +29,31 @@
 
   <!-- ===== Header ===== -->
   <header class="site-header">
-    <div class="brand">
-      <img id="brand-logo" class="brand-logo" alt="" />
-      <div class="brand-text">
-        <h1 id="site-title" class="brand-title"></h1>
-        <p id="site-tagline" class="brand-tagline"></p>
+    <div class="hgroup hgroup-left">
+      <img id="corner-left" class="header-saint" alt="" aria-hidden="true" />
+      <div class="brand">
+        <img id="brand-logo" class="brand-logo" alt="" />
+        <div class="brand-text">
+          <h1 id="site-title" class="brand-title"></h1>
+          <p id="site-tagline" class="brand-tagline"></p>
+        </div>
       </div>
     </div>
-    <nav class="header-actions">
-      <a href="#books" id="nav-books" class="nav-link"></a>
-      <a href="#about" id="nav-about" class="nav-link"></a>
-      <div class="lang-toggle" role="group" aria-label="Language">
-        <button data-setlang="ta" class="lang-opt">தமிழ்</button>
-        <button data-setlang="en" class="lang-opt">EN</button>
-      </div>
-      <button id="cart-toggle" class="cart-btn" aria-label="Open cart">
-        <span class="cart-icon">🛒</span>
-        <span id="cart-count" class="cart-count">0</span>
-      </button>
-    </nav>
+    <div class="hgroup hgroup-right">
+      <nav class="header-actions">
+        <a href="#books" id="nav-books" class="nav-link"></a>
+        <a href="#about" id="nav-about" class="nav-link"></a>
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button data-setlang="ta" class="lang-opt">தமிழ்</button>
+          <button data-setlang="en" class="lang-opt">EN</button>
+        </div>
+        <button id="cart-toggle" class="cart-btn" aria-label="Open cart">
+          <span class="cart-icon">🛒</span>
+          <span id="cart-count" class="cart-count">0</span>
+        </button>
+      </nav>
+      <img id="corner-right" class="header-saint" alt="" aria-hidden="true" />
+    </div>
   </header>
 
   <!-- ===== Hero ===== -->
@@ -82,10 +88,6 @@
   <footer class="site-footer">
     <p id="footer-line"></p>
   </footer>
-
-  <!-- ===== Corner accents (temple guardians) ===== -->
-  <img id="corner-left" class="corner-accent corner-left" alt="" aria-hidden="true" />
-  <img id="corner-right" class="corner-accent corner-right" alt="" aria-hidden="true" />
 
   <!-- ===== Cart drawer ===== -->
   <div id="cart-overlay" class="cart-overlay"></div>
