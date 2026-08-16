@@ -85,13 +85,13 @@ const BOOKS = [
     id: "book-2",
     title: { en: "Bhagavan Nama Sri Bodhendra Saraswathi Swamigal Divya Maha Sat Charitham & Bhagavan Nama Mahimai",
              ta: "பகவன் நாம ஸ்ரீ போதேந்திர ஸரஸ்வதி ஸ்வாமிகள் திவ்ய மஹா ஸத்சரிதம் மற்றும் பகவன் நாம மஹிமை" },
-    subtitle: { en: "", ta: "" }, price: 0, cover: "",
+    subtitle: { en: "", ta: "" }, price: 0, cover: "images/books/book-2.jpg",
     description: { en: "", ta: "" },
   },
   {
     id: "book-3",
     title: { en: "Gopala Priya Gomatha", ta: "கோபால ப்ரிய கோமாதா" },
-    subtitle: { en: "", ta: "" }, price: 0, cover: "",
+    subtitle: { en: "", ta: "" }, price: 0, cover: "images/books/book-3.jpg",
     description: { en: "", ta: "" },
   },
   {
@@ -139,7 +139,7 @@ const BOOKS = [
   {
     id: "book-10",
     title: { en: "Sri Senai Mudalvar Vaibhavam", ta: "ஸ்ரீ சேனை முதல்வர் வைபவம்" },
-    subtitle: { en: "", ta: "" }, price: 0, cover: "",
+    subtitle: { en: "", ta: "" }, price: 0, cover: "images/books/book-10.jpg",
     description: { en: "", ta: "" },
   },
   {
