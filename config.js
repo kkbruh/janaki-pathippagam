@@ -27,8 +27,8 @@ const SITE = {
   // Contact used for the "Order" buttons in the cart.
   // WhatsApp: full international format, digits only (no +, spaces, dashes).
   // Example for India: 91 + 10-digit number  ->  "919876543210"
-  whatsappNumber: "919999999999",         // TODO: real WhatsApp number
-  email: "orders@example.com",            // TODO: real order email
+  whatsappNumber: "919940349593",         // TODO: real WhatsApp number
+  email: "janakipathipagam@gmail.com",            // TODO: real order email
 };
 
 /* ---------------------------------------------------------------------------
@@ -78,7 +78,7 @@ const BOOKS = [
     id: "book-1",
     title: { en: "Uyya Ore Vazhi Udaiyavar Thiruvadi — Sri Yathiraja Vijayam",
              ta: "உய்ய ஒரே வழி உடையவர் திருவடி — ஸ்ரீ யதிராஜ விஜயம்" },
-    subtitle: { en: "", ta: "" }, price: 0, cover: "",
+    subtitle: { en: "", ta: "" }, price: 0, cover: "images/books/book-1.jpg",
     description: { en: "", ta: "" },
   },
   {
@@ -119,7 +119,7 @@ const BOOKS = [
     id: "book-7",
     title: { en: "Marudanallur Sri Sadguru Swamigal Punya Maha Sat Charitham",
              ta: "மருதாநல்லூர் ஸ்ரீ ஸத்குரு ஸ்வாமிகள் புண்ணிய மஹா ஸத்சரிதம்" },
-    subtitle: { en: "", ta: "" }, price: 0, cover: "",
+    subtitle: { en: "", ta: "" }, price: 0, cover: "images/books/book-7.jpg",
     description: { en: "", ta: "" },
   },
   {
@@ -133,7 +133,7 @@ const BOOKS = [
     id: "book-9",
     title: { en: "Vande Guru Parampara — Illustrious Gurus of our Sanatana Dharma",
              ta: "வந்தே குரு பரம்பரா — நமது ஸநாதன தர்மத்தின் கீர்த்திமிக்க குரு மஹநீயர்கள்" },
-    subtitle: { en: "", ta: "" }, price: 0, cover: "",
+    subtitle: { en: "", ta: "" }, price: 0, cover: "images/books/book-9.jpg",
     description: { en: "", ta: "" },
   },
   {
@@ -145,20 +145,20 @@ const BOOKS = [
   {
     id: "book-11",
     title: { en: "Dharma Swaroopan Sri Dharma Sastha", ta: "தர்மஸ்வரூபன் ஸ்ரீ தர்ம சாஸ்தா" },
-    subtitle: { en: "", ta: "" }, price: 0, cover: "",
+    subtitle: { en: "", ta: "" }, price: 0, cover: "images/books/book-11.jpg",
     description: { en: "", ta: "" },
   },
   {
     id: "book-12",
     title: { en: "Sri Vedarupi Paramatma (Marai Meetta Maraiporul)",
              ta: "ஸ்ரீ வேதரூபி பரமாத்மா (மறைமீட்ட மறைபொருள்)" },
-    subtitle: { en: "", ta: "" }, price: 0, cover: "",
+    subtitle: { en: "", ta: "" }, price: 0, cover: "images/books/book-12.jpg",
     description: { en: "", ta: "" },
   },
   {
     id: "book-13",
     title: { en: "Vedha Mudalvan (Siva Nama Mahimai)", ta: "வேத முதல்வன் (சிவநாம மஹிமை)" },
-    subtitle: { en: "", ta: "" }, price: 0, cover: "",
+    subtitle: { en: "", ta: "" }, price: 0, cover: "images/books/book-13.jpg",
     description: { en: "", ta: "" },
   },
 ];
