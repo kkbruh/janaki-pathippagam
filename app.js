@@ -7,6 +7,12 @@
 (function () {
   "use strict";
 
+  // Always open at the top on load/refresh — ignore a stale #hash or restored scroll.
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+  window.scrollTo(0, 0);
+  window.addEventListener("load", () => window.scrollTo(0, 0));
+
   const CART_KEY = "janaki-cart";
   const LANG_KEY = "janaki-lang";
 
@@ -116,7 +122,7 @@
     // Door now uses the fixed emblem + typography; only the (optional) blessing is dynamic.
     $("splash-blessing").textContent = t(SPLASH.blessing);
   }
-  function enter() { $("splash").classList.add("hide"); }
+  function enter() { $("splash").classList.add("hide"); window.scrollTo(0, 0); }
 
   /* ---- book grid ---- */
   function renderBooks() {
