@@ -36,7 +36,7 @@ const SITE = {
    --------------------------------------------------------------------------- */
 const SPLASH = {
   image: "images/deity.jpg",              // TODO: add images/deity.jpg (homepage flash)
-  blessing: { en: "॥ श्री गणेशाय नमः ॥", ta: "॥ ஶ்ரீ கணேசாய நம: ॥" },
+  blessing: { en: "", ta: "" },           // (blessing text removed)
 };
 
 /* Decorative images in the bottom-left and bottom-right corners of the page.
