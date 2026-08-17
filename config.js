@@ -16,8 +16,8 @@
 const SITE = {
   authorName: { en: "Madurai S. Raghuraman", ta: "மதுரை சு. ரகுராமன்" },
   siteTitle:  { en: "Janaki Pathippagam", ta: "ஜானகி பதிப்பகம்" },
-  tagline:    { en: "Sharing the wisdom and heritage of Sanatana Dharma.",
-                ta: "சனாதன தர்மத்தின் ஞானத்தையும் பாரம்பரியத்தையும் பகிர்கிறோம்." },
+  tagline:    { en: "Om Sri Gurubhyo Namaha\nThe Gateway to Sanatana Dharma",
+                ta: "ஓம் ஸ்ரீ குருப்யோ நமஹ :\nஸநாதன தர்மத்தின் நுழைவாயில்" },
 
   // Website logo (the Sri Rama emblem). Drop the file in images/ and name it here.
   logo: "images/logo.png",                // TODO: add images/logo.png
