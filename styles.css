@@ -215,9 +215,10 @@ img { max-width: 100%; display: block; }
 .book-title { margin: 0; font-size: 1.3rem; color: var(--ink); cursor: pointer; }
 .book-title:hover { color: var(--maroon); }
 .book-subtitle { margin: 4px 0 0; font-size: 0.95rem; color: var(--ink-soft); font-style: italic; min-height: 1em; }
-.book-price { margin: 12px 0 16px; font-size: 1.4rem; color: var(--maroon); font-weight: 600; }
+/* Price sits at the bottom, directly above the button, aligned across all cards */
+.book-price { margin: auto 0 12px; font-size: 1.4rem; color: var(--maroon); font-weight: 600; }
 .add-btn {
-  margin-top: auto; cursor: pointer;
+  margin-top: 0; cursor: pointer;
   background: var(--maroon); color: var(--cream);
   border: none; border-radius: 8px; padding: 14px 16px; font-size: 1.05rem; min-height: 52px;
   transition: background 0.15s ease;
@@ -401,7 +402,7 @@ img { max-width: 100%; display: block; }
   .book-body { padding: 10px 11px 12px; }
   .book-title { font-size: 0.95rem; }
   .book-subtitle { font-size: 0.78rem; }
-  .book-price { font-size: 1rem; margin: 6px 0 10px; }
+  .book-price { font-size: 1rem; margin: auto 0 8px; }
   .book-card .btn { min-height: 40px; padding: 9px 8px; font-size: 0.88rem; }
 
   /* Hero a touch shorter on phones */
