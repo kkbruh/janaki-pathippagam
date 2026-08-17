@@ -98,14 +98,14 @@ const BOOKS = [
     id: "book-4",
     title: { en: "Sri Karimaran — Sri Nammazhwar Sat Charitham",
              ta: "ஸ்ரீ காரிமாறன் — ஸ்ரீ நம்மாழ்வார் ஸத் சரிதம்" },
-    subtitle: { en: "", ta: "" }, price: 250, cover: "",
+    subtitle: { en: "", ta: "" }, price: 250, cover: "images/books/book-4.jpg", back: "images/books/book-4-back.jpg",
     description: { en: "", ta: "" },
   },
   {
     id: "book-5",
     title: { en: "Sri Bhavi Sameera Sri Vadiraja Theertha Guru Sarvabhauma Punya Maha Sat Charitham",
              ta: "ஸ்ரீ பாவி ஸமீர ஸ்ரீ வாதிராஜ தீர்த்த குரு ஸார்வ பௌம புண்ணிய மஹா ஸத்சரிதம்" },
-    subtitle: { en: "", ta: "" }, price: 275, cover: "",
+    subtitle: { en: "", ta: "" }, price: 275, cover: "images/books/book-5.jpg", back: "images/books/book-5-back.jpg",
     description: { en: "", ta: "" },
   },
   {
