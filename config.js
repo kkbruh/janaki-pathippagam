@@ -112,7 +112,7 @@ const BOOKS = [
     id: "book-6",
     title: { en: "Apoorva Slokangalum Arputhamana Palangalum",
              ta: "அபூர்வ ஸ்லோகங்களும் அற்புதமான பலன்களும்" },
-    subtitle: { en: "", ta: "" }, price: 250, cover: "",
+    subtitle: { en: "", ta: "" }, price: 250, cover: "images/books/book-6.jpg", back: "images/books/book-6-back.jpg",
     description: { en: "", ta: "" },
   },
   {
@@ -126,7 +126,7 @@ const BOOKS = [
     id: "book-8",
     title: { en: "Suthanthira Porattathil Veera Brahmanargal",
              ta: "சுதந்திர போராட்டத்தில் வீர பிராமணர்கள்" },
-    subtitle: { en: "", ta: "" }, price: 150, cover: "",
+    subtitle: { en: "", ta: "" }, price: 150, cover: "images/books/book-8.jpg", back: "images/books/book-8-back.jpg",
     description: { en: "", ta: "" },
   },
   {
