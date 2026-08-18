@@ -29,6 +29,13 @@ const SITE = {
   // Example for India: 91 + 10-digit number  ->  "919876543210"
   whatsappNumber: "919940349593",         // TODO: real WhatsApp number
   email: "janakipathipagam@gmail.com",            // TODO: real order email
+
+  // Delivery & payment note shown under "How to order" and in the cart.
+  // TODO: replace with your real terms (payment method, delivery area, charges).
+  deliveryNote: {
+    en: "No online payment. We confirm the price and delivery over WhatsApp or email. Delivered across India.",
+    ta: "இணையத்தில் பணம் செலுத்த வேண்டாம். விலை மற்றும் டெலிவரியை வாட்ஸ்ஆப் அல்லது மின்னஞ்சல் மூலம் உறுதி செய்வோம். இந்தியா முழுவதும் அனுப்பப்படும்.",
+  },
 };
 
 /* ---------------------------------------------------------------------------

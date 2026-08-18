@@ -43,6 +43,12 @@
     orderAddr:   { en: "Delivery address:", ta: "டெலிவரி முகவரி:" },
     orderPhone:  { en: "Phone:", ta: "தொலைபேசி:" },
     priceAsk:    { en: "Price on request", ta: "விலை கேட்டு அறியவும்" },
+    howtoTitle:  { en: "How to order", ta: "ஆர்டர் செய்வது எப்படி" },
+    howto1:      { en: "Add the books you want", ta: "வேண்டிய நூல்களைச் சேர்க்கவும்" },
+    howto2:      { en: "Tap “Order on WhatsApp” or Email", ta: "‘வாட்ஸ்ஆப்பில் ஆர்டர்’ அல்லது மின்னஞ்சலை அழுத்தவும்" },
+    howto3:      { en: "We confirm the price & deliver", ta: "நாங்கள் விலையை உறுதி செய்து அனுப்புகிறோம்" },
+    waFloatMsg:  { en: "Vanakkam! I would like to know about your books.",
+                   ta: "வணக்கம்! உங்கள் நூல்கள் குறித்து அறிய விரும்புகிறேன்." },
   };
 
   /* ---- language state (persisted) ---- */
@@ -86,7 +92,18 @@
     $("nav-about").textContent = t(STRINGS.navAbout);
     $("collection-title").textContent = t(STRINGS.collection);
     $("cart-title").textContent = t(STRINGS.cartTitle);
-    $("cart-note").textContent = t(STRINGS.cartNote);
+    $("cart-note").textContent = t(SITE.deliveryNote);
+
+    // How-to-order strip
+    $("howto-title").textContent = t(STRINGS.howtoTitle);
+    $("howto-1").textContent = t(STRINGS.howto1);
+    $("howto-2").textContent = t(STRINGS.howto2);
+    $("howto-3").textContent = t(STRINGS.howto3);
+    $("howto-delivery").textContent = t(SITE.deliveryNote);
+
+    // Floating WhatsApp contact link
+    $("wa-float").href =
+      `https://wa.me/${SITE.whatsappNumber}?text=${encodeURIComponent(t(STRINGS.waFloatMsg))}`;
     $("inquire-whatsapp").textContent = t(STRINGS.inquireWa);
     $("inquire-email").textContent = t(STRINGS.inquireEmail);
 
@@ -132,7 +149,7 @@
     grid.innerHTML = ordered.map((b) => {
       const title = t(b.title);
       const cover = b.cover
-        ? `<img class="book-cover" src="${b.cover}" alt="${escapeHtml(title)}" data-open="${b.id}" />`
+        ? `<img class="book-cover" src="${b.cover}" alt="${escapeHtml(title)}" data-open="${b.id}" loading="lazy" decoding="async" />`
         : `<div class="book-cover placeholder" data-open="${b.id}">${initials(title)}</div>`;
       return `
         <article class="book-card">
