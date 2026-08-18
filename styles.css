@@ -381,15 +381,18 @@ img { max-width: 100%; display: block; }
 
 /* ===== Mobile (phones): compact header + denser 2-up book grid ===== */
 @media (max-width: 600px) {
-  /* Header: compact — brand + controls; wraps to at most 2 rows, never overflows */
-  .site-header { padding: 9px 12px; gap: 8px 12px; }
-  .brand { gap: 8px; min-width: 0; flex: 0 1 auto; }
+  /* Header: everything on ONE row — brand shrinks (ellipsis if needed), controls stay put */
+  .site-header { padding: 9px 10px; gap: 8px; flex-wrap: nowrap; }
+  .brand { gap: 7px; min-width: 0; flex: 1 1 auto; }
   .brand-text { min-width: 0; }
-  .brand-logo { height: 38px; flex-shrink: 0; }
-  .brand-title { font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .brand-logo { height: 30px; flex-shrink: 0; }
+  .brand-title { font-size: 0.82rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .brand-tagline { display: none; }
-  .header-actions { gap: 8px; flex-wrap: nowrap; flex-shrink: 0; }
+  .header-actions { gap: 5px; flex-wrap: nowrap; flex-shrink: 0; }
   .nav-link { display: none; }
+  .lang-opt { padding: 4px 6px; font-size: 0.7rem; }
+  .cart-btn { padding: 4px 7px; font-size: 0.82rem; gap: 3px; }
+  .cart-count { min-width: 16px; height: 16px; font-size: 0.66rem; }
   .lang-opt { padding: 6px 9px; font-size: 0.82rem; }
   .cart-btn { padding: 6px 10px; font-size: 0.95rem; }
 
