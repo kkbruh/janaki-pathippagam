@@ -52,7 +52,7 @@
   };
 
   /* ---- language state (persisted) ---- */
-  let LANG = localStorage.getItem(LANG_KEY) === "en" ? "en" : "ta"; // default Tamil
+  let LANG = "ta"; // always greet in Tamil on load; English is a per-visit toggle
 
   // Return the right string for the current language.
   // Accepts a { en, ta } object OR a plain string (used as-is, e.g. names/prices).
@@ -93,12 +93,6 @@
     $("collection-title").textContent = t(STRINGS.collection);
     $("cart-title").textContent = t(STRINGS.cartTitle);
     $("cart-note").textContent = t(SITE.deliveryNote);
-
-    // How-to-order strip
-    $("howto-title").textContent = t(STRINGS.howtoTitle);
-    $("howto-1").textContent = t(STRINGS.howto1);
-    $("howto-2").textContent = t(STRINGS.howto2);
-    $("howto-3").textContent = t(STRINGS.howto3);
 
     // Floating WhatsApp contact link
     $("wa-float").href =
