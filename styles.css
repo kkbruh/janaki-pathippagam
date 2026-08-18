@@ -381,7 +381,7 @@ img { max-width: 100%; display: block; }
 /* Info column — scrolls for long synopses */
 .detail-info { flex: 1 1 auto; min-width: 0; padding: 26px 28px; overflow-y: auto; text-align: left; }
 .detail-title { margin: 0 0 8px; font-size: 1.2rem; color: var(--maroon); font-weight: 600; line-height: 1.3; }
-.detail-price { font-size: 1.4rem; color: var(--maroon); font-weight: 600; margin: 0 0 16px; }
+.detail-price { font-size: 1.4rem; color: var(--maroon); font-weight: 700; margin: 0; text-align: center; flex-shrink: 0; }
 .detail-desc { color: var(--ink); margin: 0 0 20px; line-height: 1.7; font-size: 0.98rem; }
 .detail-desc > *:first-child { margin-top: 0; }
 .detail-desc p { margin: 0 0 11px; }
