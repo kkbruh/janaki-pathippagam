@@ -15,7 +15,7 @@
    --------------------------------------------------------------------------- */
 const SITE = {
   authorName: { en: "Madurai S. Raghuraman", ta: "மதுரை சு. ரகுராமன்" },
-  siteTitle:  { en: "Janaki Pathippagam", ta: "ஜானகி பதிப்பகம்" },
+  siteTitle:  { en: "Janaki Pathippagam", ta: "ஜானகி பதிபகம்" },
   tagline:    { en: "Om Sri Gurubhyo Namaha\nThe Gateway to Sanatana Dharma",
                 ta: "ஓம் ஸ்ரீ குருப்யோ நமஹ :\nஸநாதன தர்மத்தின் நுழைவாயில்" },
 
@@ -64,7 +64,7 @@ const ABOUT = {
     { en: "I have written over 500 spiritual articles for various publications and delivered more than 25 discourses, focusing on the lives, teachings, and contributions of the revered Gurus and Mahans of our tradition.",
       ta: "பல்வேறு ஆன்மீக நாளிதழ்கள் மற்றும் இதழ்களில் 500-க்கும் மேற்பட்ட ஆன்மீகக் கட்டுரைகளை எழுதியுள்ளதுடன், நமது ஆன்மீக மரபின் போற்றத்தக்க குருமகான்களின் வாழ்க்கை மற்றும் போதனைகள் குறித்து 25-க்கும் மேற்பட்ட ஆன்மீக சொற்பொழிவுகளையும் நிகழ்த்தியுள்ளேன்." },
     { en: "In honour of my mother, I founded Janaki Pathippagam, a spiritual publishing house through which I have authored and published 13 books to date.",
-      ta: "எனது தாயாரின் பெயரில், அவரைப் போற்றும் வகையில் ஜானகி பதிப்பகம் என்ற ஆன்மீகப் பதிப்பகத்தை நிறுவியுள்ளேன். இதன் மூலம் இதுவரை 13 புத்தகங்களை எழுதி வெளியிட்டுள்ளேன்." },
+      ta: "எனது தாயாரின் பெயரில், அவரைப் போற்றும் வகையில் ஜானகி பதிபகம் என்ற ஆன்மீகப் பதிபகத்தை நிறுவியுள்ளேன். இதன் மூலம் இதுவரை 13 புத்தகங்களை எழுதி வெளியிட்டுள்ளேன்." },
     { en: "It is a privilege that my books have been recognised by respected Gurus and Mahans of the respective traditions and released by them with their blessings.",
       ta: "அந்தந்த பாரம்பரியத்தைச் சார்ந்த மரியாதைக்குரிய குருமகான்களால் எனது நூல்கள் அங்கீகரிக்கப்பட்டு, அவர்களின் திருக்கரங்களால் வெளியிடப்பட்டிருப்பது எனக்குக் கிடைத்த பெருமையும், அரிய பேறுமாகும்." },
     { en: "I have also served as the Honorary Editor of Agraharam, a spiritual magazine, and have received awards for my contributions to spiritual writing.",
