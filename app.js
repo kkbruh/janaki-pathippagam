@@ -99,7 +99,6 @@
     $("howto-1").textContent = t(STRINGS.howto1);
     $("howto-2").textContent = t(STRINGS.howto2);
     $("howto-3").textContent = t(STRINGS.howto3);
-    $("howto-delivery").textContent = t(SITE.deliveryNote);
 
     // Floating WhatsApp contact link
     $("wa-float").href =
@@ -371,6 +370,10 @@
   bind();
 
   // Optional deep-link: ?lang=ta|en enters directly in that language (skips the door).
-  const _l = new URLSearchParams(location.search).get("lang");
+  const _qs = new URLSearchParams(location.search);
+  const _l = _qs.get("lang");
   if (_l === "en" || _l === "ta") { setLang(_l); enter(); }
+  // Optional deep-link: ?book=book-3 opens straight to that book's details.
+  const _b = _qs.get("book");
+  if (_b && byId(_b)) { enter(); $("intro").classList.add("hide"); openDetail(_b); }
 })();

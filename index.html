@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Noto+Serif+Tamil:wght@400;600&family=Tiro+Tamil:ital@0;1&family=Kavivanar&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=22" />
+  <link rel="stylesheet" href="styles.css?v=24" />
 </head>
 <body>
 
@@ -74,17 +74,6 @@
     </div>
   </section>
 
-  <!-- ===== How to order ===== -->
-  <section class="howto" aria-label="How to order">
-    <h2 id="howto-title" class="howto-title"></h2>
-    <div class="howto-steps">
-      <div class="howto-step"><span class="howto-num">1</span><p id="howto-1"></p></div>
-      <div class="howto-step"><span class="howto-num">2</span><p id="howto-2"></p></div>
-      <div class="howto-step"><span class="howto-num">3</span><p id="howto-3"></p></div>
-    </div>
-    <p id="howto-delivery" class="howto-delivery"></p>
-  </section>
-
   <!-- ===== Books shop ===== -->
   <main>
     <section id="books" class="shop">
@@ -121,6 +110,14 @@
         <span id="cart-total-label"></span>
         <span id="cart-total"></span>
       </div>
+      <div class="cart-howto">
+        <p id="howto-title" class="cart-howto-title"></p>
+        <ol class="cart-steps">
+          <li id="howto-1"></li>
+          <li id="howto-2"></li>
+          <li id="howto-3"></li>
+        </ol>
+      </div>
       <p id="cart-note" class="cart-note"></p>
       <button id="inquire-whatsapp" class="btn btn--wa btn--block"></button>
       <button id="inquire-email" class="btn btn--primary btn--block"></button>
@@ -131,17 +128,23 @@
   <div id="detail-overlay" class="detail-overlay">
     <div class="detail-modal" role="dialog" aria-modal="true">
       <button id="detail-close" class="detail-close" aria-label="Close">✕</button>
-      <div class="detail-stage" id="detail-stage">
-        <img id="detail-img" class="detail-img" alt="" />
-      </div>
-      <button id="detail-prev" class="detail-nav prev" aria-label="Previous image">&#8249;</button>
-      <button id="detail-next" class="detail-nav next" aria-label="Next image">&#8250;</button>
-      <div id="detail-dots" class="detail-dots"></div>
-      <div class="detail-info">
-        <h3 id="detail-title" class="detail-title"></h3>
-        <p id="detail-price" class="detail-price"></p>
-        <p id="detail-desc" class="detail-desc"></p>
-        <button id="detail-add" class="add-btn btn btn--primary">Add to Order</button>
+      <div class="detail-body">
+        <div class="detail-media">
+          <div class="detail-figure">
+            <div class="detail-stage" id="detail-stage">
+              <img id="detail-img" class="detail-img" alt="" />
+            </div>
+            <button id="detail-prev" class="detail-nav prev" aria-label="Previous image">&#8249;</button>
+            <button id="detail-next" class="detail-nav next" aria-label="Next image">&#8250;</button>
+            <div id="detail-dots" class="detail-dots"></div>
+          </div>
+          <button id="detail-add" class="add-btn btn btn--primary detail-buy">Add to Order</button>
+        </div>
+        <div class="detail-info">
+          <h3 id="detail-title" class="detail-title"></h3>
+          <p id="detail-price" class="detail-price"></p>
+          <p id="detail-desc" class="detail-desc"></p>
+        </div>
       </div>
     </div>
   </div>
@@ -151,7 +154,7 @@
     <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="#fff" d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 22c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-4.9.9.9-4.8-.2-.4C5.5 18.5 5 16.8 5 15 5 9 9.9 4 16 4s11 5 11 11-4.9 11-11 11zm6.1-8.3c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1.1 1.3-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.3-.2-.3 0-.5.1-.7.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.8-1.9-1.1-2.6c-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg>
   </a>
 
-  <script src="config.js?v=22"></script>
-  <script src="app.js?v=22"></script>
+  <script src="config.js?v=24"></script>
+  <script src="app.js?v=24"></script>
 </body>
 </html>
