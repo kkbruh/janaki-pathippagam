@@ -134,6 +134,16 @@
     setImg($("corner-right"), typeof CORNERS !== "undefined" && CORNERS.right);
   }
 
+  /* ---- divine intro: god image fades in & out, then reveals the door ---- */
+  function runIntro() {
+    const intro = $("intro"), img = $("intro-img");
+    if (!SPLASH.image) { intro.classList.add("hide"); return; }
+    img.onerror = () => intro.classList.add("hide");
+    img.src = SPLASH.image;
+    setTimeout(() => intro.classList.add("hide"), 3800); // after the fade completes
+    intro.addEventListener("click", () => intro.classList.add("hide")); // tap to skip
+  }
+
   /* ---- splash (temple door) ---- */
   function paintSplash() {
     // Door now uses the fixed emblem + typography; only the (optional) blessing is dynamic.
@@ -354,6 +364,7 @@
   /* ---- start ---- */
   paintText();
   paintImages();
+  runIntro();
   paintSplash();
   renderBooks();
   renderCart();

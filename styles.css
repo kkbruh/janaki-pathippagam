@@ -43,6 +43,29 @@ h1, h2, h3 { font-family: "Marcellus", "Noto Serif Tamil", Georgia, serif; font-
 
 img { max-width: 100%; display: block; }
 
+/* ===== Divine intro (god image fades in & out, then reveals the door) ===== */
+.intro {
+  position: fixed; inset: 0; z-index: 1200;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle at center, var(--maroon) 0%, var(--maroon-d) 100%);
+  transition: opacity 0.9s ease, visibility 0.9s ease;
+}
+.intro.hide { opacity: 0; visibility: hidden; }
+.intro-img {
+  max-width: min(72vw, 360px); max-height: 72vh; width: auto; height: auto;
+  opacity: 0; animation: divineFade 3.6s ease-in-out forwards;
+  filter: drop-shadow(0 6px 40px rgba(199,154,60,0.45));
+}
+@keyframes divineFade {
+  0%   { opacity: 0; transform: scale(0.94); }
+  24%  { opacity: 1; transform: scale(1); }
+  70%  { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.04); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro-img { animation-duration: 0.01s; }
+}
+
 /* ===== Splash ===== */
 .splash {
   position: fixed; inset: 0; z-index: 1000;
@@ -344,7 +367,10 @@ img { max-width: 100%; display: block; }
 .detail-info { padding: 14px 26px 26px; text-align: center; }
 .detail-title { margin: 0 0 8px; font-size: 1.05rem; color: var(--maroon); font-weight: 600; }
 .detail-price { font-size: 1.25rem; color: var(--maroon); font-weight: 600; margin: 0 0 14px; }
-.detail-desc { color: var(--ink-soft); margin: 0 0 18px; }
+.detail-desc {
+  color: var(--ink-soft); margin: 0 0 18px;
+  text-align: left; white-space: pre-line; line-height: 1.65; font-size: 0.98rem;
+}
 .detail-info .add-btn { min-width: 220px; }
 
 /* ===== Responsive ===== */
