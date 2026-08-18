@@ -143,13 +143,6 @@
     intro.addEventListener("click", () => intro.classList.add("hide")); // tap to skip
   }
 
-  /* ---- splash (temple door) ---- */
-  function paintSplash() {
-    // Door now uses the fixed emblem + typography; only the (optional) blessing is dynamic.
-    $("splash-blessing").textContent = t(SPLASH.blessing);
-  }
-  function enter() { $("splash").classList.add("hide"); window.scrollTo(0, 0); }
-
   /* ---- book grid ---- */
   function renderBooks() {
     const grid = $("book-grid");
@@ -195,17 +188,21 @@
     wrap.innerHTML = ids.map((id) => {
       const b = byId(id), qty = cart[id];
       total += b.price * qty;
+      const thumb = b.cover ? `<img class="cart-thumb" src="${b.cover}" alt="" loading="lazy" />` : "";
       return `
         <div class="cart-row">
+          ${thumb}
           <div class="cart-row-main">
             <p class="cart-row-title">${escapeHtml(t(b.title))}</p>
-            <p class="cart-row-price">${escapeHtml(b.price ? money(b.price) + " " + t(STRINGS.each) : t(STRINGS.priceAsk))}</p>
+            <div class="cart-row-ctrls">
+              <div class="qty">
+                <button data-dec="${id}" aria-label="−">−</button>
+                <span>${qty}</span>
+                <button data-inc="${id}" aria-label="+">+</button>
+              </div>
+              <span class="cart-row-price">${escapeHtml(b.price ? money(b.price * qty) : t(STRINGS.priceAsk))}</span>
+            </div>
             <button class="cart-remove" data-remove="${id}">${t(STRINGS.remove)}</button>
-          </div>
-          <div class="qty">
-            <button data-dec="${id}" aria-label="−">−</button>
-            <span>${qty}</span>
-            <button data-inc="${id}" aria-label="+">+</button>
           </div>
         </div>`;
     }).join("");
@@ -274,7 +271,7 @@
     $("detail-title").textContent = t(b.title);
     $("detail-price").textContent = priceText(b.price);
     const desc = t(b.description);
-    $("detail-desc").textContent = desc || "";
+    $("detail-desc").innerHTML = formatDesc(desc);
     $("detail-desc").style.display = desc ? "" : "none";
     $("detail-add").dataset.add = b.id;
     $("detail-add").textContent = t(STRINGS.addToOrder);
@@ -306,7 +303,6 @@
     LANG = lang === "en" ? "en" : "ta";
     try { localStorage.setItem(LANG_KEY, LANG); } catch { /* ignore */ }
     paintText();
-    paintSplash();
     renderBooks();
     renderCart();
     if (openDetailId) openDetail(openDetailId);
@@ -317,6 +313,33 @@
     return String(s).replace(/[&<>"']/g, (c) =>
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   }
+
+  // Turn a raw synopsis (lines separated by \n) into clean, readable HTML:
+  // headings (lines ending with :), bulleted lists, numbered lists, paragraphs.
+  function formatDesc(text) {
+    if (!text) return "";
+    const lines = String(text).split("\n").map((l) => l.trim()).filter(Boolean);
+    let html = "", mode = null; // null | "ul" | "ol"
+    const close = () => { if (mode) { html += mode === "ul" ? "</ul>" : "</ol>"; mode = null; } };
+    for (const line of lines) {
+      const isBullet = /^[•▪◦*\-–]\s+/.test(line);
+      const numM = line.match(/^\(?(\d{1,3})[\).\-]\s+(.*)$/);
+      const isHead = /[:：]\s*$/.test(line) && line.length < 60;
+      if (isBullet) {
+        if (mode !== "ul") { close(); html += '<ul class="desc-bullets">'; mode = "ul"; }
+        html += `<li>${escapeHtml(line.replace(/^[•▪◦*\-–]\s+/, ""))}</li>`;
+      } else if (numM) {
+        if (mode !== "ol") { close(); html += '<ol class="desc-num">'; mode = "ol"; }
+        html += `<li>${escapeHtml(numM[2])}</li>`;
+      } else if (isHead) {
+        close(); html += `<p class="desc-head">${escapeHtml(line)}</p>`;
+      } else {
+        close(); html += `<p>${escapeHtml(line)}</p>`;
+      }
+    }
+    close();
+    return html;
+  }
   function initials(title) {
     return String(title).trim().split(/\s+/).slice(0, 2).map((w) => w[0] || "").join("");
   }
@@ -326,7 +349,6 @@
     document.addEventListener("click", (e) => {
       const t2 = e.target.closest("[data-add],[data-open],[data-inc],[data-dec],[data-remove],[data-lang],[data-setlang]");
       if (!t2) return;
-      if (t2.dataset.lang) { setLang(t2.dataset.lang); enter(); return; }        // door: choose + enter
       if (t2.dataset.setlang) { setLang(t2.dataset.setlang); return; }           // header toggle
       if (t2.dataset.add) {
         addToCart(t2.dataset.add);
@@ -364,7 +386,6 @@
   paintText();
   paintImages();
   runIntro();
-  paintSplash();
   renderBooks();
   renderCart();
   bind();
@@ -372,8 +393,8 @@
   // Optional deep-link: ?lang=ta|en enters directly in that language (skips the door).
   const _qs = new URLSearchParams(location.search);
   const _l = _qs.get("lang");
-  if (_l === "en" || _l === "ta") { setLang(_l); enter(); }
+  if (_l === "en" || _l === "ta") { setLang(_l); document.getElementById("intro").classList.add("hide"); }
   // Optional deep-link: ?book=book-3 opens straight to that book's details.
   const _b = _qs.get("book");
-  if (_b && byId(_b)) { enter(); $("intro").classList.add("hide"); openDetail(_b); }
+  if (_b && byId(_b)) { $("intro").classList.add("hide"); openDetail(_b); }
 })();
