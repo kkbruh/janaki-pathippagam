@@ -306,7 +306,7 @@ img { max-width: 100%; display: block; }
   color: var(--gold); font-size: 1.15rem; line-height: 1;
   background: #fffdf9; padding: 0 12px;
 }
-.about-text { text-align: left; }
+.about-text { text-align: justify; text-justify: inter-word; hyphens: auto; }
 .about-text p { color: var(--ink); line-height: 1.85; margin: 0 0 14px; }
 .about-text p:first-child { font-size: 1.06rem; color: var(--maroon-d); font-weight: 500; }
 .about-bless {
