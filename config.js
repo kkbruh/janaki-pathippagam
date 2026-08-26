@@ -14,7 +14,7 @@
    1) SITE INFO
    --------------------------------------------------------------------------- */
 const SITE = {
-  authorName: { en: "Madurai S. Raghuraman", ta: "மதுரை சு. ரகுராமன்" },
+  authorName: { en: "Madurai S. Raghu Raman", ta: "மதுரை சு. ரகுராமன்" },
   siteTitle:  { en: "Janaki Pathippagam", ta: "ஜானகி பதிபகம்" },
   tagline:    { en: "Om Sri Gurubhyo Namaha\nThe Gateway to Sanatana Dharma",
                 ta: "ஓம் ஸ்ரீ குருப்யோ நமஹ :\nஸநாதன தர்மத்தின் நுழைவாயில்" },
@@ -57,21 +57,31 @@ const CORNERS = {
    3) ABOUT SECTION  —  bottom of the page, with the author's photo.
    --------------------------------------------------------------------------- */
 const ABOUT = {
-  photo: "images/author.jpg",             // TODO: add images/author.jpg
+  photo: "images/author.jpg",
+  name: { en: "Madurai S. Raghu Raman", ta: "மதுரை சு. ரகுராமன்" },
+  role: {
+    en: "Spiritual Author  |  Compiler  |  Publisher",
+    ta: "ஆன்மீக எழுத்தாளர்  |  தொகுப்பாசிரியர்  |  பதிப்பாளர்",
+  },
   paragraphs: [
-    { en: "I am Madurai S. Raghuraman, a spiritual writer and author dedicated to sharing the timeless wisdom and values of Sanatana Dharma.",
-      ta: "நான் மதுரை சு. ரகுராமன். சனாதன தர்மத்தின் காலத்தால் அழியாத ஞானத்தையும், உயர்ந்த நெறிகளையும் பகிர்ந்து கொள்ளும் நோக்கத்துடன் ஆன்மீக எழுத்தாளராகவும், ஆசிரியராகவும் செயல்பட்டு வருகிறேன்." },
-    { en: "I have written over 500 spiritual articles for various publications and delivered more than 25 discourses, focusing on the lives, teachings, and contributions of the revered Gurus and Mahans of our tradition.",
-      ta: "பல்வேறு ஆன்மீக நாளிதழ்கள் மற்றும் இதழ்களில் 500-க்கும் மேற்பட்ட ஆன்மீகக் கட்டுரைகளை எழுதியுள்ளதுடன், நமது ஆன்மீக மரபின் போற்றத்தக்க குருமகான்களின் வாழ்க்கை மற்றும் போதனைகள் குறித்து 25-க்கும் மேற்பட்ட ஆன்மீக சொற்பொழிவுகளையும் நிகழ்த்தியுள்ளேன்." },
-    { en: "In honour of my mother, I founded Janaki Pathippagam, a spiritual publishing house through which I have authored and published 13 books to date.",
-      ta: "எனது தாயாரின் பெயரில், அவரைப் போற்றும் வகையில் ஜானகி பதிபகம் என்ற ஆன்மீகப் பதிபகத்தை நிறுவியுள்ளேன். இதன் மூலம் இதுவரை 13 புத்தகங்களை எழுதி வெளியிட்டுள்ளேன்." },
-    { en: "It is a privilege that my books have been recognised by respected Gurus and Mahans of the respective traditions and released by them with their blessings.",
-      ta: "அந்தந்த பாரம்பரியத்தைச் சார்ந்த மரியாதைக்குரிய குருமகான்களால் எனது நூல்கள் அங்கீகரிக்கப்பட்டு, அவர்களின் திருக்கரங்களால் வெளியிடப்பட்டிருப்பது எனக்குக் கிடைத்த பெருமையும், அரிய பேறுமாகும்." },
-    { en: "I have also served as the Honorary Editor of Agraharam, a spiritual magazine, and have received awards for my contributions to spiritual writing.",
-      ta: "மேலும், ஆன்மீக இதழான ‘அக்ரஹாரம்’ இதழின் கௌரவ ஆசிரியராகவும் பணியாற்றுகிறேன். ஆன்மீக எழுத்துத் துறையில் எனது பங்களிப்பிற்காக பல்வேறு விருதுகளையும் பெற்றுள்ளேன்." },
-    { en: "Through my writing and publishing, my aim is to share the knowledge, values, and spiritual heritage of Sanatana Dharma with a wider audience.",
-      ta: "சனாதன தர்மத்தின் ஞானம், நற்பண்புகள் மற்றும் ஆன்மீகப் பாரம்பரியத்தைப் பரந்த அளவில் பகிர்ந்து கொள்வதே எனது எழுத்துப் பயணத்தின் நோக்கமாகும்." },
+    { en: "I serve as a spiritual author, compiler and publisher with the mission of sharing the timeless wisdom, noble values of Sanatana Dharma and Bharat's ancient spiritual heritage with society.",
+      ta: "ஸநாதன தர்மத்தின் காலத்தால் அழியாத ஞானத்தையும், உயர்ந்த நெறிகளையும், பாரதத்தின் தொன்மையான ஆன்மீகப் பாரம்பரியத்தையும் மக்களிடம் கொண்டு சேர்க்கும் நோக்கத்துடன் ஆன்மீக எழுத்தாளராகவும், தொகுப்பாசிரியராகவும், பதிப்பாளராகவும் செயல்பட்டு வருகின்றேன்." },
+    { en: "In honour of my mother, Smt. Janaki Ammal, I established 'Janaki Pathipagam', a spiritual publishing house. Through this endeavour, I publish and present to the public the sublime life histories (Satcharitas) and divine discourses of the revered Gurus and Acharyas born in the sacred land of Bharat, alongside the profound teachings of Sanatana Dharma.",
+      ta: "எனது தாயார் ஜானகி அம்மையாரின் பெயரைப் போற்றும் வகையில் ‘ஜானகி பதிபகம்’ என்ற ஆன்மீகப் பதிபகத்தை நிறுவியுள்ளேன். இதன் மூலம் பாரத தேசத்தின் புண்ணிய பூமியில் அவதரித்த குருமஹான்கள் மற்றும் ஆச்சார்யர்களின் உன்னத ஸத்சரிதங்களையும், அவர்களின் அருளுரைகளையும், ஸநாதன தர்மத்தின் உயரிய சிந்தனைகளையும் நூல் வடிவில் மக்களிடம் கொண்டு சேர்த்து வருகின்றேன்." },
+    { en: "To date, I have authored over 500 spiritual articles across various publications and newspapers, delivered more than 25 spiritual discourses, and written and published 13 spiritual books.",
+      ta: "பல்வேறு ஆன்மீக நாளிதழ்களில் இதுவரை 500-க்கும் மேற்பட்ட ஆன்மீகக் கட்டுரைகளை எழுதியுள்ளேன். மேலும், 25-க்கும் மேற்பட்ட ஆன்மீகச் சொற்பொழிவுகளை நிகழ்த்தியுள்ளேன். இதுவரை 13 ஆன்மீக நூல்களை எழுதி வெளியிட்டுள்ளேன்." },
+    { en: "I consider it a rare honour and blessing that my books have been acknowledged and released by the holy hands of revered Guru Mahaneeyas representing various spiritual traditions across Bharat. I deem it my primary duty to convey the sacred life stories of these holy Gurus to the next generation.",
+      ta: "பாரதத்தின் பல்வேறு ஆன்மீகப் பாரம்பரியங்களைச் சார்ந்த மரியாதைக்குரிய குருமஹநீயர்களினால் எனது நூல்கள் அங்கீகரிக்கப்பட்டு, அவர்களின் திருக்கரங்களால் வெளியிடப்பட்டிருப்பது எனக்குக் கிடைத்த பெருமையுடன் கூடிய அரிய பேறாகக் கருதுகின்றேன். இப்புண்ணிய குரு மஹநீயர்களின் ஸத்சரிதத்தினை அடுத்த தலைமுறையினரிடம் கொண்டு சேர்ப்பதை எனது முக்கியப் பணியாகக் கருதுகின்றேன்." },
+    { en: "It is my humble desire that present and future generations learn the profound wisdom and righteous life principles bestowed by our Acharyas and holy Gurus, adopt them, and lead a noble life.",
+      ta: "இன்றைய தலைமுறையினரும், வருங்கால சந்ததியினரும் நமது ஆச்சார்யர்கள், குருமகான்கள் அருளிய உயரிய ஞானத்தையும், வாழ்க்கை நெறிகளையும் அறிந்து, அவற்றைப் பின்பற்றி நல்லதொரு வாழ்வை வாழ வேண்டும் என்பதே எனது பணிவான விருப்பம்." },
+    { en: "Additionally, I serve as the Honorary Editor of the spiritual magazine 'Agraharam'. I have been honoured with various awards and recognitions for my contributions to the field of spiritual literature.",
+      ta: "மேலும், ஆன்மீக இதழான ‘அக்ரஹாரம்’ இதழின் கௌரவ ஆசிரியராகப் பணியாற்றி வருகிறேன். ஆன்மீக எழுத்துத் துறையில் நான் ஆற்றிவரும் பங்களிப்பிற்காக பல்வேறு விருதுகளையும் கௌரவங்களையும் பெற்றுள்ளேன்." },
+    { en: "I view my literary journey not merely as writing work, but as a dedicated endeavour to carry the highest ideals, dharmic principles, moral virtues and spiritual wisdom of our tradition to society — especially to the youth.",
+      ta: "எனது எழுத்துப் பயணம் வெறும் எழுத்துப் பணியாக மட்டும் இல்லாமல், நமது பாரம்பரியத்தின் உயரிய சிந்தனைகள், தர்ம நெறிகள், நற்பண்புகள் மற்றும் ஆன்மீக ஞானம் ஆகியவற்றை சமூகத்திற்கும், குறிப்பாக இளைய தலைமுறையினருக்கும் கொண்டு சேர்க்கும் ஒரு பணியாகவே நான் கருதுகின்றேன்." },
+    { en: "The ultimate aim of my writing journey is to share widely the wisdom, values and sublime spiritual treasures of Sanatana Dharma, and to preserve them for the generations to come.",
+      ta: "ஸநாதன தர்மத்தின் ஞானத்தையும், நற்பண்புகளையும், நமது பாரம்பரியத்தின் உன்னத ஆன்மீகச் செல்வங்களையும் பரந்த அளவில் பகிர்ந்து கொண்டு, அவற்றை வருங்காலத் தலைமுறைகளுக்குப் பாதுகாத்து வழங்குவதே எனது எழுத்துப் பயணத்தின் உயரிய நோக்கமாகும்." },
   ],
+  blessing: { en: "Sri Gurubhyo Namaha  |  Harih Om", ta: "ஸ்ரீ குருப்யோ நம:  |  ஹரி: ஓம்" },
 };
 
 /* ---------------------------------------------------------------------------

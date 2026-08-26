@@ -21,6 +21,7 @@
     navBooks:    { en: "Books", ta: "நூல்கள்" },
     navAbout:    { en: "About", ta: "பற்றி" },
     aboutHeading:{ en: "About the Author", ta: "நூலாசிரியர் பற்றி" },
+    heroAbout:   { en: "About the Author  ↓", ta: "நூலாசிரியர் பற்றி  ↓" },
     heroSub:     { en: "Browse the collection below. Add the books you want, then send your order over WhatsApp or email.",
                    ta: "கீழே உள்ள தொகுப்பைப் பாருங்கள். வேண்டிய நூல்களைச் சேர்த்து, உங்கள் ஆர்டரை வாட்ஸ்ஆப் அல்லது மின்னஞ்சல் மூலம் அனுப்புங்கள்." },
     heroCta:     { en: "View the collection", ta: "தொகுப்பைப் பார்க்க" },
@@ -88,6 +89,7 @@
     $("hero-heading").textContent = t(SITE.tagline);
     $("hero-sub").textContent = t(STRINGS.heroSub);
     $("hero-cta").textContent = t(STRINGS.heroCta);
+    $("hero-about").textContent = t(STRINGS.heroAbout);
     $("nav-books").textContent = t(STRINGS.navBooks);
     $("nav-about").textContent = t(STRINGS.navAbout);
     $("collection-title").textContent = t(STRINGS.collection);
@@ -102,7 +104,10 @@
 
     $("about-heading").textContent = t(STRINGS.aboutHeading);
     $("about-photo").src = ABOUT.photo;
-    $("about-photo").alt = t(SITE.authorName);
+    $("about-photo").alt = t(ABOUT.name);
+    $("about-name").textContent = t(ABOUT.name);
+    $("about-role").textContent = t(ABOUT.role);
+    $("about-bless").textContent = t(ABOUT.blessing);
     $("about-paragraphs").innerHTML = ABOUT.paragraphs
       .map((p) => `<p>${escapeHtml(t(p))}</p>`).join("");
     $("footer-line").textContent =
@@ -376,6 +381,20 @@
     });
   }
 
+  // Gentle fade-up when the About card scrolls into view (progressive enhancement).
+  function revealAbout() {
+    const card = document.querySelector(".about-frame");
+    if (!card || !("IntersectionObserver" in window)) return;
+    card.classList.add("reveal");
+    const show = () => card.classList.add("in");
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) { show(); io.disconnect(); }
+    }, { threshold: 0, rootMargin: "0px 0px -10% 0px" });
+    io.observe(card);
+    // Safety net: never leave the bio hidden if the observer doesn't fire.
+    setTimeout(show, 1600);
+  }
+
   /* ---- start ---- */
   paintText();
   paintImages();
@@ -383,6 +402,7 @@
   renderBooks();
   renderCart();
   bind();
+  revealAbout();
 
   // Optional deep-link: ?lang=ta|en enters directly in that language (skips the door).
   const _qs = new URLSearchParams(location.search);

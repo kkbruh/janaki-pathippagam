@@ -250,27 +250,82 @@ img { max-width: 100%; display: block; }
 .add-btn:hover { background: var(--saffron); }
 .add-btn.added { background: var(--gold); color: var(--maroon-d); }
 
-/* ===== About ===== */
+/* ===== About — a framed, regal author panel ===== */
 .about {
-  padding: 64px 24px;
-  /* Bold, obvious separator: a maroon lintel with gold trim above the cream ground,
-     which also connects to the kolam side-bands to frame the About as a panel. */
+  padding: 66px 24px 74px;
+  scroll-margin-top: 76px;   /* clears the sticky header when jumped to */
+  /* maroon lintel + gold trim over a warm radial ground */
   background:
-    linear-gradient(var(--maroon), var(--maroon)) top / 100% 18px no-repeat,
-    linear-gradient(var(--gold),   var(--gold))   0 18px / 100% 4px no-repeat,
-    var(--cream-d);
-  border-top: 3px solid var(--gold);
+    linear-gradient(var(--maroon), var(--maroon)) top / 100% 16px no-repeat,
+    linear-gradient(var(--gold),   var(--gold))   0 16px / 100% 3px no-repeat,
+    radial-gradient(130% 90% at 50% 0%, #f8eed6 0%, var(--cream-d) 62%);
 }
-.about-inner {
-  max-width: 720px; margin: 0 auto;
-  display: flex; flex-direction: column; align-items: center; text-align: center;
+.about-inner { max-width: 760px; margin: 0 auto; }
+.about-inner .section-title { margin-bottom: 28px; }
+
+.about-frame {
+  position: relative;
+  background: linear-gradient(180deg, #fffdf9, #fdf5e7);
+  border: 1px solid var(--gold);
+  border-radius: 16px;
+  padding: 40px clamp(20px, 5vw, 50px) 34px;
+  box-shadow: 0 20px 52px rgba(74,30,12,0.20);
 }
+/* inner gold hairline, like a certificate border */
+.about-frame::before {
+  content: ""; position: absolute; inset: 10px;
+  border: 1px solid rgba(199,154,60,0.45); border-radius: 10px; pointer-events: none;
+}
+/* scroll-reveal */
+.about-frame.reveal { opacity: 0; transform: translateY(26px); }
+.about-frame.reveal.in {
+  opacity: 1; transform: none;
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.about-portrait { text-align: center; margin: 0 0 22px; }
 .about-photo {
-  width: 100%; max-width: 520px; height: auto; display: block;
-  margin: 0 auto 14px;
+  width: 100%; max-width: 460px; height: auto; display: inline-block;
+  border-radius: 10px; box-shadow: 0 12px 28px rgba(44,24,16,0.22);
 }
-.about-text { margin-top: 8px; text-align: left; }
-.about-text p { color: var(--ink-soft); }
+.about-name {
+  font-family: "Marcellus", serif; font-size: clamp(1.6rem, 4.4vw, 2.25rem);
+  color: var(--maroon); text-align: center; margin: 2px 0 6px; line-height: 1.15;
+}
+.about-role {
+  text-align: center; color: #9a7423; font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase; margin: 0;
+}
+.about-divide { position: relative; width: 140px; height: 20px; margin: 18px auto 26px; }
+.about-divide::before {
+  content: ""; position: absolute; top: 50%; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.about-divide::after {
+  content: "\0950"; font-family: "Tiro Devanagari Hindi", serif; /* ॐ */
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  color: var(--gold); font-size: 1.15rem; line-height: 1;
+  background: #fffdf9; padding: 0 12px;
+}
+.about-text { text-align: left; }
+.about-text p { color: var(--ink); line-height: 1.85; margin: 0 0 14px; }
+.about-text p:first-child { font-size: 1.06rem; color: var(--maroon-d); font-weight: 500; }
+.about-bless {
+  text-align: center; margin: 26px 0 2px; color: var(--maroon);
+  font-family: "Marcellus", serif; font-size: 1.15rem; letter-spacing: 0.04em;
+}
+.about-bless::before, .about-bless::after {
+  content: "\0965"; font-family: "Tiro Devanagari Hindi", serif; /* ॥ */
+  color: var(--gold); margin: 0 12px;
+}
+
+/* Hero → About redirect link (works on mobile, where the header nav is hidden) */
+.hero-about {
+  display: block; width: fit-content; margin: 18px auto 0;
+  color: var(--cream); font-size: 1rem; text-decoration: none; opacity: 0.92;
+  border-bottom: 1px solid rgba(199,154,60,0.6); padding-bottom: 3px;
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+.hero-about:hover { color: var(--gold-l); opacity: 1; }
 
 /* ===== Footer ===== */
 .site-footer { background: var(--maroon-d); color: var(--gold-l); text-align: center; padding: 22px; font-size: 0.85rem; }
@@ -409,8 +464,9 @@ img { max-width: 100%; display: block; }
   .brand-title { font-size: 1.3rem; }
   .hero { padding: 52px 18px; }
   .hero-heading { font-size: 1.9rem; }
-  .about-inner { flex-direction: column; text-align: center; }
-  .about-text .section-title, .about-text .section-title::after { text-align: center; margin-left: auto; margin-right: auto; }
+  .about { padding: 44px 14px 52px; }
+  .about-frame { padding: 26px 18px 26px; border-radius: 13px; }
+  .about-frame::before { inset: 7px; }
 }
 
 
