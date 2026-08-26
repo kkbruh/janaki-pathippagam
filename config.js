@@ -15,7 +15,7 @@
    --------------------------------------------------------------------------- */
 const SITE = {
   authorName: { en: "Madurai S. Raghu Raman", ta: "மதுரை சு. ரகுராமன்" },
-  siteTitle:  { en: "Janaki Pathippagam", ta: "ஜானகி பதிபகம்" },
+  siteTitle:  { en: "Janaki Pathipagam", ta: "ஜானகி பதிப்பகம்" },
   tagline:    { en: "Om Sri Gurubhyo Namaha\nThe Gateway to Sanatana Dharma",
                 ta: "ஓம் ஸ்ரீ குருப்யோ நமஹ :\nஸநாதன தர்மத்தின் நுழைவாயில்" },
 
@@ -67,7 +67,7 @@ const ABOUT = {
     { en: "I serve as a spiritual author, compiler and publisher with the mission of sharing the timeless wisdom, noble values of Sanatana Dharma and Bharat's ancient spiritual heritage with society.",
       ta: "ஸநாதன தர்மத்தின் காலத்தால் அழியாத ஞானத்தையும், உயர்ந்த நெறிகளையும், பாரதத்தின் தொன்மையான ஆன்மீகப் பாரம்பரியத்தையும் மக்களிடம் கொண்டு சேர்க்கும் நோக்கத்துடன் ஆன்மீக எழுத்தாளராகவும், தொகுப்பாசிரியராகவும், பதிப்பாளராகவும் செயல்பட்டு வருகின்றேன்." },
     { en: "In honour of my mother, Smt. Janaki Ammal, I established 'Janaki Pathipagam', a spiritual publishing house. Through this endeavour, I publish and present to the public the sublime life histories (Satcharitas) and divine discourses of the revered Gurus and Acharyas born in the sacred land of Bharat, alongside the profound teachings of Sanatana Dharma.",
-      ta: "எனது தாயார் ஜானகி அம்மையாரின் பெயரைப் போற்றும் வகையில் ‘ஜானகி பதிபகம்’ என்ற ஆன்மீகப் பதிபகத்தை நிறுவியுள்ளேன். இதன் மூலம் பாரத தேசத்தின் புண்ணிய பூமியில் அவதரித்த குருமஹான்கள் மற்றும் ஆச்சார்யர்களின் உன்னத ஸத்சரிதங்களையும், அவர்களின் அருளுரைகளையும், ஸநாதன தர்மத்தின் உயரிய சிந்தனைகளையும் நூல் வடிவில் மக்களிடம் கொண்டு சேர்த்து வருகின்றேன்." },
+      ta: "எனது தாயார் ஜானகி அம்மையாரின் பெயரைப் போற்றும் வகையில் ‘ஜானகி பதிப்பகம்’ என்ற ஆன்மீகப் பதிப்பகத்தை நிறுவியுள்ளேன். இதன் மூலம் பாரத தேசத்தின் புண்ணிய பூமியில் அவதரித்த குருமஹான்கள் மற்றும் ஆச்சார்யர்களின் உன்னத ஸத்சரிதங்களையும், அவர்களின் அருளுரைகளையும், ஸநாதன தர்மத்தின் உயரிய சிந்தனைகளையும் நூல் வடிவில் மக்களிடம் கொண்டு சேர்த்து வருகின்றேன்." },
     { en: "To date, I have authored over 500 spiritual articles across various publications and newspapers, delivered more than 25 spiritual discourses, and written and published 13 spiritual books.",
       ta: "பல்வேறு ஆன்மீக நாளிதழ்களில் இதுவரை 500-க்கும் மேற்பட்ட ஆன்மீகக் கட்டுரைகளை எழுதியுள்ளேன். மேலும், 25-க்கும் மேற்பட்ட ஆன்மீகச் சொற்பொழிவுகளை நிகழ்த்தியுள்ளேன். இதுவரை 13 ஆன்மீக நூல்களை எழுதி வெளியிட்டுள்ளேன்." },
     { en: "I consider it a rare honour and blessing that my books have been acknowledged and released by the holy hands of revered Guru Mahaneeyas representing various spiritual traditions across Bharat. I deem it my primary duty to convey the sacred life stories of these holy Gurus to the next generation.",
