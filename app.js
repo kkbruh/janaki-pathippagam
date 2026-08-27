@@ -22,6 +22,9 @@
     navAbout:    { en: "About the Author", ta: "நூலாசிரியர் பற்றிய குறிப்பு" },
     aboutHeading:{ en: "About the Author", ta: "நூலாசிரியர் பற்றி" },
     heroAbout:   { en: "About the Author  ↓", ta: "நூலாசிரியர் பற்றி  ↓" },
+    blessTitle:  { en: "Blessings & Endorsements", ta: "ஆசீர்வாதங்களும் மங்களாசாசனங்களும்" },
+    blessIntro:  { en: "Every title has been blessed and formally released by revered Mutts, Acharyas and Jeeyar Swamigal. Tap any letter to read it in full.", ta: "ஒவ்வொரு நூலும் மரியாதைக்குரிய மடங்கள், ஆச்சார்யர்கள் மற்றும் ஜீயர் ஸ்வாமிகளால் ஆசீர்வதிக்கப்பட்டு வெளியிடப்பட்டுள்ளது. முழு மடலையும் படிக்க அதைத் தொடவும்." },
+    blessInPopup:{ en: "Blessings (Mangalasasanam)", ta: "ஆசீர்வாதம் (மங்களாசாசனம்)" },
     heroSub:     { en: "Browse the collection below. Add the books you want, then send your order over WhatsApp or email.",
                    ta: "கீழே உள்ள தொகுப்பைப் பாருங்கள். வேண்டிய நூல்களைச் சேர்த்து, உங்கள் ஆர்டரை வாட்ஸ்ஆப் அல்லது மின்னஞ்சல் மூலம் அனுப்புங்கள்." },
     heroCta:     { en: "View the collection", ta: "தொகுப்பைப் பார்க்க" },
@@ -110,6 +113,10 @@
     $("about-bless").textContent = t(ABOUT.blessing);
     $("about-paragraphs").innerHTML = ABOUT.paragraphs
       .map((p) => `<p>${escapeHtml(t(p))}</p>`).join("");
+
+    $("blessings-title").textContent = t(STRINGS.blessTitle);
+    $("blessings-intro").textContent = t(STRINGS.blessIntro);
+    renderBlessings();
     $("footer-line").textContent =
       `© ${new Date().getFullYear()} ${t(SITE.authorName)}. ${t(STRINGS.rights)}`;
 
@@ -274,6 +281,15 @@
     $("detail-desc").style.display = desc ? "" : "none";
     $("detail-add").dataset.add = b.id;
     $("detail-add").textContent = t(STRINGS.addToOrder);
+    // Blessings strip inside the popup
+    const bl = blessingsFor(b.id);
+    const box = $("detail-blessings");
+    if (bl.length) {
+      box.innerHTML =
+        `<h4 class="bless-head">${escapeHtml(t(STRINGS.blessInPopup))}</h4>` +
+        `<div class="bless-strip" data-bbook="${b.id}">${blessThumbsHtml(bl)}</div>`;
+      box.style.display = "";
+    } else { box.innerHTML = ""; box.style.display = "none"; }
     showDetailImg();
     $("detail-overlay").classList.add("open");
   }
@@ -372,7 +388,28 @@
     $("detail-prev").addEventListener("click", (e) => { e.stopPropagation(); detailNav(-1); });
     $("detail-next").addEventListener("click", (e) => { e.stopPropagation(); detailNav(1); });
     $("detail-img").addEventListener("click", (e) => { e.stopPropagation(); toggleZoom(); });
+    // Blessing thumbnails → open lightbox (works in popup and home showcase)
+    document.addEventListener("click", (e) => {
+      const th = e.target.closest(".bless-thumb");
+      if (!th) return;
+      const strip = th.closest(".bless-strip");
+      const set = blessingsFor(strip && strip.dataset.bbook);
+      if (set.length) openLightbox(set, +th.dataset.bidx || 0);
+    });
+    $("lb-close").addEventListener("click", closeLightbox);
+    $("lb-prev").addEventListener("click", (e) => { e.stopPropagation(); lbNav(-1); });
+    $("lb-next").addEventListener("click", (e) => { e.stopPropagation(); lbNav(1); });
+    $("lightbox").addEventListener("click", (e) => {
+      if (e.target.id === "lightbox" || e.target.classList.contains("lb-stage")) closeLightbox();
+    });
+
     document.addEventListener("keydown", (e) => {
+      if ($("lightbox").classList.contains("open")) {
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") lbNav(-1);
+        if (e.key === "ArrowRight") lbNav(1);
+        return;
+      }
       if (e.key === "Escape") { closeCart(); closeDetail(); }
       if ($("detail-overlay").classList.contains("open")) {
         if (e.key === "ArrowLeft") detailNav(-1);
@@ -380,6 +417,43 @@
       }
     });
   }
+
+  /* ---- Blessings (Srimukham / Mangalasasanam) + lightbox ---- */
+  function blessingsFor(id) {
+    return (typeof BLESSINGS !== "undefined" && BLESSINGS[id]) ? BLESSINGS[id] : [];
+  }
+  function blessThumbsHtml(list) {
+    return list.map((e, i) =>
+      `<button class="bless-thumb" type="button" data-bidx="${i}">
+         <img src="${e.img}" alt="" loading="lazy" />
+         <span class="bless-by">${escapeHtml(t(e.by))}</span>
+       </button>`).join("");
+  }
+  function renderBlessings() {
+    const g = $("blessings-gallery");
+    if (!g) return;
+    const ids = (typeof BLESSINGS !== "undefined") ? Object.keys(BLESSINGS) : [];
+    g.innerHTML = ids.map((id) => {
+      const b = byId(id);
+      return `<div class="bless-group">
+        <h3 class="bless-group-title">${escapeHtml(b ? t(b.title) : id)}</h3>
+        <div class="bless-strip" data-bbook="${id}">${blessThumbsHtml(BLESSINGS[id])}</div>
+      </div>`;
+    }).join("");
+  }
+
+  let lbSet = [], lbIdx = 0;
+  function openLightbox(set, idx) { lbSet = set; lbIdx = idx; paintLightbox(); $("lightbox").classList.add("open"); }
+  function paintLightbox() {
+    const it = lbSet[lbIdx]; if (!it) return;
+    $("lb-img").src = it.img;
+    $("lb-caption").textContent = t(it.by);
+    const multi = lbSet.length > 1;
+    $("lb-prev").style.display = multi ? "" : "none";
+    $("lb-next").style.display = multi ? "" : "none";
+  }
+  function lbNav(dir) { if (lbSet.length < 2) return; lbIdx = (lbIdx + dir + lbSet.length) % lbSet.length; paintLightbox(); }
+  function closeLightbox() { $("lightbox").classList.remove("open"); $("lb-img").src = ""; }
 
   // Gentle fade-up when the About card scrolls into view (progressive enhancement).
   function revealAbout() {

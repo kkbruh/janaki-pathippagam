@@ -179,3 +179,53 @@ const BOOKS = [
     description: { en: "With deep respect, I offer my thanks to the revered Sarvajna Kanchi Kamakoti Shankaracharya Swamigal Sri Matham, who has blessed this sacred Sat Charitam.\nWith the blessing (Anugraha Bhashyam) of the revered Nerur Sri Sri Vidyashankara Saraswathi Swamigal (Nerur Sri Sastha Swamigal, Sri Vidya Narasimha Ashramam, Nerur), this book was released by Swamigal at the Chidambaram Nataraja sanctum on 12.07.2026 (Sunday).\nI also offer my respects to the Marudanallur Sadguru Swamigal Sri Matham, who gave the Srimukham (sacred blessing message).\nThis sacred Sat Charitam examines the following chapters in great detail:\n(i) Jagadguru Parameshwara — Sri Dakshinamurthy and Sri Sadashiva: Rare and profound explanations concerning the forms of Sri Dakshinamurthy and Sri Sadashiva.\n(ii) Parabrahman Himself is Parameshwara: A substantiation of this truth through authoritative scriptural evidence (Sakshi Pramanas).\n(iii) Parameshwara is the very embodiment of Pranava (Om).\n(iv) The Panchakshara is the liberating mantra (Taraka).\n(v) The Name of Shiva in the Vedas.\n(vi) The Sacred Five-Syllabled Mantra praised by the great saints and devotees of the Shaiva tradition: A brief account of the Panniru Thirumurai (the Twelve Sacred Shaiva Scriptures) and the Nayanmars.\n(vii) The Glory of the Name of Shiva as revealed in various Puranas and Upanishads.\n(viii) Maathorubagan — The Lord who honours and gives equal dignity to women.", ta: "இப்புண்ணிய ஸத் சரிதத்திற்கு அனுகிரக வசனம் அருளிய பாரம்பரியமிக்க ஸர்வக்ஞ காஞ்சி காமகோடி சங்கராச்சார்ய ஸ்வாமிகள் ஸ்ரீமடத்திற்கு அடியேனின் கோடானுகோடி நமஸ்காரங்கள்.\nபரம பூஜனீய நெரூர் ஸ்ரீ ஸ்ரீ வித்யாஶங்கர ஸரஸ்வதி ஸ்வாமிகள் (நெரூர் ஸ்ரீ ஶாஸ்தா ஸ்வாமிகள், ஸ்ரீ வித்யா ந்ருஸிம்ஹ ஆஸ்ரமம், நெரூர்) அனுகிரஹ பாஷ்யத்துடன், ஸ்வாமிகளின் திருக்கரங்களால் சிதம்பரம் நடராஜர் சன்னிதியில் 12.07.2026 (ஞாயிறு) அன்று வெளியிடப்பட்டது.\nஸ்ரீமுகம் அருளிய  மருதாநல்லூர் ஸத்குரு ஸ்வாமிகள் ஸ்ரீமடத்திற்கும் அடியேனின் பணிவான நமஸ்காரங்கள்.\nஇப்புண்ணிய ஸத் ஸரிதம் பின்வரும் அத்தியாயங்களைப் பற்றி மிகவும் விரிவாக ஆராய்கின்றது :-\n(i) ஜகத்குரு பரமேஸ்வரன் - ஸ்ரீ தக்ஷிணாமூர்த்தி மற்றும் ஸ்ரீ ஸதாசிவன் மூர்த்தங்களைப் பற்றிய அரிய விளக்கங்கள்.\n(ii) பரப்ரஹ்மனே பரமேஸ்வரன் - சாக்ஷி பிரமாணங்கள் மூலம் நிரூபணம்.\n(iii) ப்ரணவ ஸ்வரூபமே பரமேஸ்வரன்.\n(iv) பஞ்சாக்ஷரமே தாரகம்.\n(v) வேதத்தில் சிவ நாமம்.\n(vi) சைவ சமய அருளாளர்கள் போற்றும் திருவைந்தெழுத்து - பன்னிரு திருமுறைகள் மற்றும் நாயன்மார்களைப் பற்றிய சிறு குறிப்பு.\n(vii) பல்வேறு புராணங்கள் மற்றும் உபநிஷத்துக்களில் சிவ நாம மஹிமை\n(viii) மங்கையருக்கு மதிப்பளிக்கும் மாதொருபாகன்" },
   },
 ];
+
+/* ---------------------------------------------------------------------------
+   5) BLESSINGS — Srimukham / Mangalasasanam letters, keyed by book id.
+   Each: { img, by:{en,ta} }. Shown in the book popup and the home showcase.
+   --------------------------------------------------------------------------- */
+const BLESSINGS = {
+  "book-1": [
+    { img: "images/blessings/book-1/1-1.jpg", by: { en: "Sri Perumbudur Embar Jeeyar Swamigal", ta: "ஸ்ரீ பெரும்பூதூர் எம்பார் ஜீயர் ஸ்வாமிகள்" } },
+  ],
+  "book-4": [
+    { img: "images/blessings/book-4/4-1.jpg", by: { en: "Sri Perumbudur Embar Jeeyar Swamigal", ta: "ஸ்ரீ பெரும்பூதூர் எம்பார் ஜீயர் ஸ்வாமிகள்" } },
+  ],
+  "book-9": [
+    { img: "images/blessings/book-9/9-1.jpg", by: { en: "Kanchi Kamakoti Peetam", ta: "காஞ்சி காமகோடி பீடம்" } },
+  ],
+  "book-10": [
+    { img: "images/blessings/book-10/10-1.jpg", by: { en: "Sri Ahobila Mutt", ta: "ஸ்ரீ அஹோபில மடம்" } },
+    { img: "images/blessings/book-10/10-2.jpg", by: { en: "Azhvaar Thirunagari Jeeyar Swamigal", ta: "ஆழ்வார் திருநகரி ஜீயர் ஸ்வாமிகள்" } },
+    { img: "images/blessings/book-10/10-3p1.jpg", by: { en: "Sri Perumbudur Embar Jeeyar Swamigal", ta: "ஸ்ரீ பெரும்பூதூர் எம்பார் ஜீயர் ஸ்வாமிகள்" } },
+    { img: "images/blessings/book-10/10-3p2.jpg", by: { en: "Sri Perumbudur Embar Jeeyar Swamigal", ta: "ஸ்ரீ பெரும்பூதூர் எம்பார் ஜீயர் ஸ்வாமிகள்" } },
+    { img: "images/blessings/book-10/10-4p1.jpg", by: { en: "Srirangam Srimad Andavan Ashramam", ta: "ஸ்ரீரங்கம் ஸ்ரீமத் ஆண்டவன் ஆஸ்ரமம்" } },
+    { img: "images/blessings/book-10/10-4p2.jpg", by: { en: "Srirangam Srimad Andavan Ashramam", ta: "ஸ்ரீரங்கம் ஸ்ரீமத் ஆண்டவன் ஆஸ்ரமம்" } },
+  ],
+  "book-11": [
+    { img: "images/blessings/book-11/11-1.jpg", by: { en: "Kanchi Kamakoti Peetam", ta: "காஞ்சி காமகோடி பீடம்" } },
+    { img: "images/blessings/book-11/11-2.jpg", by: { en: "Kongu Mandalam Sri Narayana Ramanuja Jeeyar Swamigal", ta: "கொங்கு மண்டலம் ஸ்ரீ நாராயண ராமானுஜ ஜீயர் ஸ்வாமிகள்" } },
+    { img: "images/blessings/book-11/11-3.jpg", by: { en: "Badari Shankaracharya Mahasamsthanam, Sakatapuram", ta: "ஷகடபுரம் பத்ரி சங்கராசார்ய மஹாஸம்ஸ்தானம்" } },
+    { img: "images/blessings/book-11/11-4p1.jpg", by: { en: "Sri Bharadwaja Swamigal, Yogamaya Bhuvaneshwari Peetham", ta: "ஸ்ரீ பரத்வாஜ ஸ்வாமிகள்" } },
+    { img: "images/blessings/book-11/11-4p2.jpg", by: { en: "Sri Bharadwaja Swamigal, Yogamaya Bhuvaneshwari Peetham", ta: "ஸ்ரீ பரத்வாஜ ஸ்வாமிகள்" } },
+    { img: "images/blessings/book-11/11-5.jpg", by: { en: "Sabarimala Sri Thazhamon Thanthri", ta: "சபரிமலை ஸ்ரீ தழமண் தந்திரி" } },
+  ],
+  "book-12": [
+    { img: "images/blessings/book-12/12-1.jpg", by: { en: "Azhvaar Thirunagari Jeeyar Swamigal", ta: "ஆழ்வார் திருநகரி ஜீயர் ஸ்வாமிகள்" } },
+    { img: "images/blessings/book-12/12-2p1.jpg", by: { en: "Srirangam Srimad Andavan Ashramam", ta: "ஸ்ரீரங்கம் ஸ்ரீமத் ஆண்டவன் ஆஸ்ரமம்" } },
+    { img: "images/blessings/book-12/12-2p2.jpg", by: { en: "Srirangam Srimad Andavan Ashramam", ta: "ஸ்ரீரங்கம் ஸ்ரீமத் ஆண்டவன் ஆஸ்ரமம்" } },
+  ],
+  "book-13": [
+    { img: "images/blessings/book-13/13-1p1.jpg", by: { en: "Kanchi Kamakoti Peetam", ta: "காஞ்சி காமகோடி பீடம்" } },
+    { img: "images/blessings/book-13/13-1p2.jpg", by: { en: "Kanchi Kamakoti Peetam", ta: "காஞ்சி காமகோடி பீடம்" } },
+    { img: "images/blessings/book-13/13-2p1.jpg", by: { en: "Marudanallur Sadguru Swamigal", ta: "மருதாநல்லூர் ஸத்குரு ஸ்வாமிகள்" } },
+    { img: "images/blessings/book-13/13-2p2.jpg", by: { en: "Marudanallur Sadguru Swamigal", ta: "மருதாநல்லூர் ஸத்குரு ஸ்வாமிகள்" } },
+    { img: "images/blessings/book-13/13-3.jpg", by: { en: "Sri Trinetra Mahanta Shivayogi Swamiji", ta: "ஸ்ரீ த்ரிநேத்ர மஹாந்த சிவயோகி ஸ்வாமிஜி" } },
+    { img: "images/blessings/book-13/13-4p1.jpg", by: { en: "Nerur Sri Vidyashankara Saraswathi Swamigal", ta: "நேரூர் ஸ்ரீ வித்யாசங்கர சரஸ்வதி ஸ்வாமிகள்" } },
+    { img: "images/blessings/book-13/13-4p2.jpg", by: { en: "Nerur Sri Vidyashankara Saraswathi Swamigal", ta: "நேரூர் ஸ்ரீ வித்யாசங்கர சரஸ்வதி ஸ்வாமிகள்" } },
+    { img: "images/blessings/book-13/13-4p3.jpg", by: { en: "Nerur Sri Vidyashankara Saraswathi Swamigal", ta: "நேரூர் ஸ்ரீ வித்யாசங்கர சரஸ்வதி ஸ்வாமிகள்" } },
+    { img: "images/blessings/book-13/13-4p4.jpg", by: { en: "Nerur Sri Vidyashankara Saraswathi Swamigal", ta: "நேரூர் ஸ்ரீ வித்யாசங்கர சரஸ்வதி ஸ்வாமிகள்" } },
+    { img: "images/blessings/book-13/13-4p5.jpg", by: { en: "Nerur Sri Vidyashankara Saraswathi Swamigal", ta: "நேரூர் ஸ்ரீ வித்யாசங்கர சரஸ்வதி ஸ்வாமிகள்" } },
+    { img: "images/blessings/book-13/13-4p6.jpg", by: { en: "Nerur Sri Vidyashankara Saraswathi Swamigal", ta: "நேரூர் ஸ்ரீ வித்யாசங்கர சரஸ்வதி ஸ்வாமிகள்" } },
+  ],
+};
