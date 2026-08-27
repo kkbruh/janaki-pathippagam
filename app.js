@@ -26,7 +26,7 @@
     blessIntro:  { en: "Every title has been blessed and formally released by revered Mutts, Acharyas and Jeeyar Swamigal. Tap any letter to read it in full.", ta: "ஒவ்வொரு நூலும் மரியாதைக்குரிய மடங்கள், ஆச்சார்யர்கள் மற்றும் ஜீயர் ஸ்வாமிகளால் ஆசீர்வதிக்கப்பட்டு வெளியிடப்பட்டுள்ளது. முழு மடலையும் படிக்க அதைத் தொடவும்." },
     blessInPopup:{ en: "Blessings (Mangalasasanam)", ta: "ஆசீர்வாதம் (மங்களாசாசனம்)" },
     tabDesc:     { en: "Description", ta: "நூல் விவரம்" },
-    tabCert:     { en: "Certificates", ta: "சான்றிதழ்கள்" },
+    tabCert:     { en: "Mangalasasanam", ta: "மங்களாசாசனம்" },
     heroSub:     { en: "Browse the collection below. Add the books you want, then send your order over WhatsApp or email.",
                    ta: "கீழே உள்ள தொகுப்பைப் பாருங்கள். வேண்டிய நூல்களைச் சேர்த்து, உங்கள் ஆர்டரை வாட்ஸ்ஆப் அல்லது மின்னஞ்சல் மூலம் அனுப்புங்கள்." },
     heroCta:     { en: "View the collection", ta: "தொகுப்பைப் பார்க்க" },
