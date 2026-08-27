@@ -114,9 +114,6 @@
     $("about-paragraphs").innerHTML = ABOUT.paragraphs
       .map((p) => `<p>${escapeHtml(t(p))}</p>`).join("");
 
-    $("blessings-title").textContent = t(STRINGS.blessTitle);
-    $("blessings-intro").textContent = t(STRINGS.blessIntro);
-    renderBlessings();
     $("footer-line").textContent =
       `© ${new Date().getFullYear()} ${t(SITE.authorName)}. ${t(STRINGS.rights)}`;
 
@@ -429,19 +426,6 @@
          <span class="bless-by">${escapeHtml(t(e.by))}</span>
        </button>`).join("");
   }
-  function renderBlessings() {
-    const g = $("blessings-gallery");
-    if (!g) return;
-    const ids = (typeof BLESSINGS !== "undefined") ? Object.keys(BLESSINGS) : [];
-    g.innerHTML = ids.map((id) => {
-      const b = byId(id);
-      return `<div class="bless-group">
-        <h3 class="bless-group-title">${escapeHtml(b ? t(b.title) : id)}</h3>
-        <div class="bless-strip" data-bbook="${id}">${blessThumbsHtml(BLESSINGS[id])}</div>
-      </div>`;
-    }).join("");
-  }
-
   let lbSet = [], lbIdx = 0;
   function openLightbox(set, idx) { lbSet = set; lbIdx = idx; paintLightbox(); $("lightbox").classList.add("open"); }
   function paintLightbox() {
