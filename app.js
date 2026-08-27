@@ -256,8 +256,8 @@
   /* ---- detail modal: front/back slider + click-to-zoom ---- */
   let openDetailId = null, detailMedia = [], detailIndex = 0;
   function showDetailImg() {
-    const img = $("detail-img"), stage = $("detail-stage");
-    img.classList.remove("zoomed"); stage.classList.remove("zoomed");
+    const img = $("detail-img");
+    resetZoom();
     if (!detailMedia.length) { img.style.visibility = "hidden"; img.removeAttribute("src"); }
     else { img.style.visibility = "visible"; img.src = detailMedia[detailIndex]; }
     const multi = detailMedia.length > 1;
@@ -310,15 +310,58 @@
     detailIndex = (detailIndex + dir + detailMedia.length) % detailMedia.length;
     showDetailImg();
   }
-  function toggleZoom() {
-    $("detail-img").classList.toggle("zoomed");
-    $("detail-stage").classList.toggle("zoomed");
+  // Click to zoom toward the tapped point; drag to pan. Works for mouse + touch.
+  const zoom = { on: false, s: 2.6, x: 0, y: 0, drag: false, sx: 0, sy: 0, moved: false };
+  function applyZoom() {
+    $("detail-img").style.transform = zoom.on ? `translate(${zoom.x}px, ${zoom.y}px) scale(${zoom.s})` : "";
   }
+  function clampZoom() {
+    const img = $("detail-img"), st = $("detail-stage");
+    const sw = img.offsetWidth * zoom.s, sh = img.offsetHeight * zoom.s;
+    const Wv = st.clientWidth, Hv = st.clientHeight;
+    zoom.x = sw <= Wv ? (Wv - sw) / 2 : Math.max(Wv - sw, Math.min(0, zoom.x));
+    zoom.y = sh <= Hv ? (Hv - sh) / 2 : Math.max(Hv - sh, Math.min(0, zoom.y));
+  }
+  function resetZoom() {
+    zoom.on = false; zoom.drag = false; zoom.moved = false;
+    const img = $("detail-img");
+    img.classList.remove("zoomed", "dragging");
+    $("detail-stage").classList.remove("zoomed");
+    img.style.transform = "";
+  }
+  function zoomInAt(clientX, clientY) {
+    const img = $("detail-img"), st = $("detail-stage");
+    const r = img.getBoundingClientRect();
+    const px = (clientX - r.left) / r.width, py = (clientY - r.top) / r.height;
+    zoom.on = true;
+    img.classList.add("zoomed"); st.classList.add("zoomed");
+    const w = img.offsetWidth, h = img.offsetHeight;
+    zoom.x = st.clientWidth / 2 - px * w * zoom.s;
+    zoom.y = st.clientHeight / 2 - py * h * zoom.s;
+    clampZoom(); applyZoom();
+  }
+  function toggleZoom(e) {
+    if (zoom.moved) { zoom.moved = false; return; }
+    if (zoom.on) resetZoom(); else zoomInAt(e.clientX, e.clientY);
+  }
+  function zoomPanStart(e) {
+    if (!zoom.on) return;
+    zoom.drag = true; zoom.moved = false; zoom.sx = e.clientX; zoom.sy = e.clientY;
+    $("detail-img").classList.add("dragging");
+    try { e.target.setPointerCapture(e.pointerId); } catch { /* ignore */ }
+  }
+  function zoomPanMove(e) {
+    if (!zoom.drag) return;
+    const dx = e.clientX - zoom.sx, dy = e.clientY - zoom.sy;
+    if (Math.abs(dx) + Math.abs(dy) > 3) zoom.moved = true;
+    zoom.x += dx; zoom.y += dy; zoom.sx = e.clientX; zoom.sy = e.clientY;
+    clampZoom(); applyZoom();
+  }
+  function zoomPanEnd() { zoom.drag = false; $("detail-img").classList.remove("dragging"); }
   function closeDetail() {
     openDetailId = null;
     $("detail-overlay").classList.remove("open");
-    $("detail-img").classList.remove("zoomed");
-    $("detail-stage").classList.remove("zoomed");
+    resetZoom();
   }
 
   /* ---- cart open/close ---- */
@@ -403,7 +446,11 @@
     $("detail-overlay").addEventListener("click", (e) => { if (e.target.id === "detail-overlay") closeDetail(); });
     $("detail-prev").addEventListener("click", (e) => { e.stopPropagation(); detailNav(-1); });
     $("detail-next").addEventListener("click", (e) => { e.stopPropagation(); detailNav(1); });
-    $("detail-img").addEventListener("click", (e) => { e.stopPropagation(); toggleZoom(); });
+    $("detail-img").addEventListener("click", (e) => { e.stopPropagation(); toggleZoom(e); });
+    $("detail-img").addEventListener("pointerdown", (e) => { e.stopPropagation(); zoomPanStart(e); });
+    $("detail-img").addEventListener("pointermove", zoomPanMove);
+    $("detail-img").addEventListener("pointerup", zoomPanEnd);
+    $("detail-img").addEventListener("pointercancel", zoomPanEnd);
     // Blessing thumbnails → open lightbox (works in popup and home showcase)
     document.addEventListener("click", (e) => {
       const th = e.target.closest(".bless-thumb");
