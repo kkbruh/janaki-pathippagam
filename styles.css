@@ -643,3 +643,16 @@ img { max-width: 100%; display: block; }
   .bless-thumb img { height: 128px; }
   .detail-blessings .bless-thumb { width: calc(50% - 7px); }
 }
+
+/* ===== Popup tabs: Description / Certificates ===== */
+.detail-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--cream-d); margin: 4px 0 16px; }
+.dtab {
+  border: none; background: transparent; cursor: pointer;
+  font-family: "Marcellus", serif; font-size: 1rem; color: var(--ink-soft);
+  padding: 9px 15px; border-bottom: 2px solid transparent; margin-bottom: -1px;
+  transition: color 0.12s ease, border-color 0.12s ease;
+}
+.dtab:hover { color: var(--maroon); }
+.dtab.active { color: var(--maroon); border-bottom-color: var(--gold); }
+.detail-pane { display: none; }
+.detail-pane.active { display: block; }

@@ -25,6 +25,8 @@
     blessTitle:  { en: "Blessings & Endorsements", ta: "ஆசீர்வாதங்களும் மங்களாசாசனங்களும்" },
     blessIntro:  { en: "Every title has been blessed and formally released by revered Mutts, Acharyas and Jeeyar Swamigal. Tap any letter to read it in full.", ta: "ஒவ்வொரு நூலும் மரியாதைக்குரிய மடங்கள், ஆச்சார்யர்கள் மற்றும் ஜீயர் ஸ்வாமிகளால் ஆசீர்வதிக்கப்பட்டு வெளியிடப்பட்டுள்ளது. முழு மடலையும் படிக்க அதைத் தொடவும்." },
     blessInPopup:{ en: "Blessings (Mangalasasanam)", ta: "ஆசீர்வாதம் (மங்களாசாசனம்)" },
+    tabDesc:     { en: "Description", ta: "நூல் விவரம்" },
+    tabCert:     { en: "Certificates", ta: "சான்றிதழ்கள்" },
     heroSub:     { en: "Browse the collection below. Add the books you want, then send your order over WhatsApp or email.",
                    ta: "கீழே உள்ள தொகுப்பைப் பாருங்கள். வேண்டிய நூல்களைச் சேர்த்து, உங்கள் ஆர்டரை வாட்ஸ்ஆப் அல்லது மின்னஞ்சல் மூலம் அனுப்புங்கள்." },
     heroCta:     { en: "View the collection", ta: "தொகுப்பைப் பார்க்க" },
@@ -275,20 +277,33 @@
     $("detail-price").textContent = priceText(b.price);
     const desc = t(b.description);
     $("detail-desc").innerHTML = formatDesc(desc);
-    $("detail-desc").style.display = desc ? "" : "none";
     $("detail-add").dataset.add = b.id;
     $("detail-add").textContent = t(STRINGS.addToOrder);
-    // Blessings strip inside the popup
+    // Description / Certificates tabs
     const bl = blessingsFor(b.id);
-    const box = $("detail-blessings");
+    $("detail-blessings").innerHTML = bl.length
+      ? `<div class="bless-strip" data-bbook="${b.id}">${blessThumbsHtml(bl)}</div>` : "";
+    const tabs = $("detail-tabs");
     if (bl.length) {
-      box.innerHTML =
-        `<h4 class="bless-head">${escapeHtml(t(STRINGS.blessInPopup))}</h4>` +
-        `<div class="bless-strip" data-bbook="${b.id}">${blessThumbsHtml(bl)}</div>`;
-      box.style.display = "";
-    } else { box.innerHTML = ""; box.style.display = "none"; }
+      tabs.style.display = "";
+      tabs.innerHTML =
+        `<button class="dtab" data-pane="desc">${escapeHtml(t(STRINGS.tabDesc))}</button>` +
+        `<button class="dtab" data-pane="cert">${escapeHtml(t(STRINGS.tabCert))} (${bl.length})</button>`;
+    } else {
+      tabs.style.display = "none";
+      tabs.innerHTML = "";
+    }
+    setDetailTab("desc");
     showDetailImg();
     $("detail-overlay").classList.add("open");
+  }
+  function setDetailTab(pane) {
+    $("detail-desc").classList.toggle("active", pane === "desc");
+    $("detail-blessings").classList.toggle("active", pane === "cert");
+    document.querySelectorAll("#detail-tabs .dtab").forEach((b) =>
+      b.classList.toggle("active", b.dataset.pane === pane));
+    const info = document.querySelector(".detail-info");
+    if (info) info.scrollTop = 0;
   }
   function detailNav(dir) {
     if (detailMedia.length < 2) return;
@@ -381,6 +396,10 @@
     $("inquire-whatsapp").addEventListener("click", inquireWhatsApp);
     $("inquire-email").addEventListener("click", inquireEmail);
     $("detail-close").addEventListener("click", closeDetail);
+    $("detail-tabs").addEventListener("click", (e) => {
+      const tab = e.target.closest(".dtab");
+      if (tab) setDetailTab(tab.dataset.pane);
+    });
     $("detail-overlay").addEventListener("click", (e) => { if (e.target.id === "detail-overlay") closeDetail(); });
     $("detail-prev").addEventListener("click", (e) => { e.stopPropagation(); detailNav(-1); });
     $("detail-next").addEventListener("click", (e) => { e.stopPropagation(); detailNav(1); });
