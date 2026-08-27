@@ -29,7 +29,7 @@ html { scroll-behavior: smooth; font-size: 19px; }
 html, body { overflow-x: hidden; max-width: 100%; }
 body {
   margin: 0;
-  font-family: "Noto Serif", "Noto Serif Tamil", Georgia, serif;
+  font-family: "Noto Serif", "Hind Madurai", Georgia, serif;
   color: var(--ink);
   /* Warm sanctum ground — soft lamp-lit glow at the top, sandstone below. */
   background:
@@ -39,7 +39,7 @@ body {
   line-height: 1.7;
 }
 
-h1, h2, h3 { font-family: "Marcellus", "Noto Serif Tamil", Georgia, serif; font-weight: 400; letter-spacing: 0.02em; }
+h1, h2, h3 { font-family: "Marcellus", "Hind Madurai", Georgia, serif; font-weight: 400; letter-spacing: 0.02em; }
 
 img { max-width: 100%; display: block; }
 
@@ -86,7 +86,7 @@ img { max-width: 100%; display: block; }
 }
 /* Stylish two-tier Tamil wordmark */
 .splash-name-ta {
-  font-family: "Tiro Tamil", "Noto Serif Tamil", serif; font-weight: 400;
+  font-family: "Tiro Tamil", "Hind Madurai", serif; font-weight: 400;
   font-size: clamp(2.6rem, 9vw, 3.9rem); line-height: 1.04; margin: 0;
   color: var(--gold-l); letter-spacing: 0.01em;
   text-shadow: 0 2px 18px rgba(0,0,0,0.35);
@@ -95,10 +95,10 @@ img { max-width: 100%; display: block; }
   display: block; color: var(--cream); font-size: 0.6em; letter-spacing: 0.08em; margin-top: 2px;
 }
 .splash-name-en {
-  font-family: "Marcellus", serif; letter-spacing: 0.34em; text-indent: 0.34em;
+  font-family: "Marcellus", "Hind Madurai", serif; letter-spacing: 0.34em; text-indent: 0.34em;
   font-size: 0.82rem; color: rgba(232,207,143,0.72); margin: 14px 0 0;
 }
-.splash-blessing { color: var(--gold-l); font-family: "Tiro Devanagari Hindi", "Noto Serif Tamil", serif; font-size: 1.4rem; margin: 8px 0 0; }
+.splash-blessing { color: var(--gold-l); font-family: "Tiro Devanagari Hindi", "Hind Madurai", serif; font-size: 1.4rem; margin: 8px 0 0; }
 .splash-choose { margin-top: 30px; }
 .splash-choose { color: var(--gold-l); font-size: 1rem; letter-spacing: 0.04em; margin: 0 0 16px; opacity: 0.9; }
 .lang-choice { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
@@ -234,7 +234,7 @@ img { max-width: 100%; display: block; }
 }
 .book-cover.placeholder {
   display: flex; align-items: center; justify-content: center;
-  color: var(--maroon); font-family: "Marcellus", serif; font-size: 2.2rem; text-align: center;
+  color: var(--maroon); font-family: "Marcellus", "Hind Madurai", serif; font-size: 2.2rem; text-align: center;
 }
 .book-body { padding: 18px 18px 20px; display: flex; flex-direction: column; flex: 1; }
 .book-title { margin: 0; font-size: 1.3rem; color: var(--ink); cursor: pointer; }
@@ -289,7 +289,7 @@ img { max-width: 100%; display: block; }
   border-radius: 10px; box-shadow: 0 12px 28px rgba(44,24,16,0.22);
 }
 .about-name {
-  font-family: "Marcellus", serif; font-size: clamp(1.6rem, 4.4vw, 2.25rem);
+  font-family: "Marcellus", "Hind Madurai", serif; font-size: clamp(1.6rem, 4.4vw, 2.25rem);
   color: var(--maroon); text-align: center; margin: 2px 0 6px; line-height: 1.15;
 }
 .about-role {
@@ -312,7 +312,7 @@ img { max-width: 100%; display: block; }
 .about-text p:first-child { font-size: 1.06rem; color: var(--maroon-d); font-weight: 500; }
 .about-bless {
   text-align: center; margin: 26px 0 2px; color: var(--maroon);
-  font-family: "Marcellus", serif; font-size: 1.15rem; letter-spacing: 0.04em;
+  font-family: "Marcellus", "Hind Madurai", serif; font-size: 1.15rem; letter-spacing: 0.04em;
 }
 .about-bless::before, .about-bless::after {
   content: "\0965"; font-family: "Tiro Devanagari Hindi", serif; /* ॥ */
@@ -540,7 +540,7 @@ img { max-width: 100%; display: block; }
 .howto-num {
   width: 42px; height: 42px; border-radius: 50%; background: var(--maroon); color: var(--cream);
   display: flex; align-items: center; justify-content: center; font-size: 1.25rem;
-  font-family: "Marcellus", serif; flex-shrink: 0;
+  font-family: "Marcellus", "Hind Madurai", serif; flex-shrink: 0;
 }
 .howto-step p { margin: 0; color: var(--ink); font-size: 1.05rem; }
 .howto-delivery { max-width: 660px; margin: 24px auto 0; color: var(--ink-soft); font-size: 0.98rem; }
@@ -580,7 +580,7 @@ img { max-width: 100%; display: block; }
 }
 .blessings-gallery { max-width: var(--maxw); margin: 0 auto; display: flex; flex-direction: column; gap: 30px; }
 .bless-group-title {
-  font-family: "Marcellus", serif; color: var(--maroon); font-size: 1.15rem;
+  font-family: "Marcellus", "Hind Madurai", serif; color: var(--maroon); font-size: 1.15rem;
   margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--gold);
 }
 .bless-strip { display: flex; flex-wrap: wrap; gap: 14px; }
@@ -600,7 +600,7 @@ img { max-width: 100%; display: block; }
 /* blessings inside the book popup */
 .detail-blessings { margin-top: 6px; }
 .bless-head {
-  font-family: "Marcellus", serif; color: var(--maroon); font-size: 1rem;
+  font-family: "Marcellus", "Hind Madurai", serif; color: var(--maroon); font-size: 1rem;
   margin: 0 0 10px; padding-top: 16px; border-top: 1px solid var(--cream-d);
 }
 .detail-blessings .bless-thumb { width: 104px; }
@@ -612,11 +612,18 @@ img { max-width: 100%; display: block; }
   background: rgba(20,10,8,0.93); align-items: center; justify-content: center; padding: 40px 16px;
 }
 .lightbox.open { display: flex; }
-.lb-stage { max-width: 100%; max-height: 100%; display: flex; align-items: center; justify-content: center; }
-.lb-img {
-  max-width: min(920px, 94vw); max-height: 84vh; width: auto; height: auto;
-  border-radius: 6px; box-shadow: 0 20px 60px rgba(0,0,0,0.6); background: #fff;
+.lb-stage {
+  width: min(920px, 94vw); max-width: 100%; height: 86vh;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
 }
+.lb-stage.zoomed { align-items: flex-start; justify-content: flex-start; }
+.lb-img {
+  max-width: 100%; max-height: 100%; width: auto; height: auto;
+  border-radius: 6px; box-shadow: 0 20px 60px rgba(0,0,0,0.6); background: #fff;
+  cursor: zoom-in; transform-origin: 0 0;
+}
+.lb-img.zoomed { cursor: grab; touch-action: none; border-radius: 0; }
+.lb-img.dragging { cursor: grabbing; }
 .lb-close {
   position: fixed; top: 16px; right: 18px; z-index: 2;
   width: 44px; height: 44px; border-radius: 50%; border: none; cursor: pointer;
@@ -645,7 +652,7 @@ img { max-width: 100%; display: block; }
 .detail-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--cream-d); margin: 4px 0 16px; }
 .dtab {
   border: none; background: transparent; cursor: pointer;
-  font-family: "Marcellus", serif; font-size: 1rem; color: var(--ink-soft);
+  font-family: "Marcellus", "Hind Madurai", serif; font-size: 1rem; color: var(--ink-soft);
   padding: 9px 15px; border-bottom: 2px solid transparent; margin-bottom: -1px;
   transition: color 0.12s ease, border-color 0.12s ease;
 }

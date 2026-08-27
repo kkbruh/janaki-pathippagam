@@ -257,7 +257,7 @@
   let openDetailId = null, detailMedia = [], detailIndex = 0;
   function showDetailImg() {
     const img = $("detail-img");
-    resetZoom();
+    detailZoom.reset();
     if (!detailMedia.length) { img.style.visibility = "hidden"; img.removeAttribute("src"); }
     else { img.style.visibility = "visible"; img.src = detailMedia[detailIndex]; }
     const multi = detailMedia.length > 1;
@@ -311,57 +311,47 @@
     showDetailImg();
   }
   // Click to zoom toward the tapped point; drag to pan. Works for mouse + touch.
-  const zoom = { on: false, s: 2.6, x: 0, y: 0, drag: false, sx: 0, sy: 0, moved: false };
-  function applyZoom() {
-    $("detail-img").style.transform = zoom.on ? `translate(${zoom.x}px, ${zoom.y}px) scale(${zoom.s})` : "";
+  // Reusable so both the book cover and the Mangalasasanam lightbox share it.
+  function makeZoomer(imgId, stageId) {
+    const z = { on: false, s: 2.6, x: 0, y: 0, drag: false, sx: 0, sy: 0, moved: false };
+    const apply = () => { $(imgId).style.transform = z.on ? `translate(${z.x}px, ${z.y}px) scale(${z.s})` : ""; };
+    function clamp() {
+      const img = $(imgId), st = $(stageId);
+      const sw = img.offsetWidth * z.s, sh = img.offsetHeight * z.s;
+      const Wv = st.clientWidth, Hv = st.clientHeight;
+      z.x = sw <= Wv ? (Wv - sw) / 2 : Math.max(Wv - sw, Math.min(0, z.x));
+      z.y = sh <= Hv ? (Hv - sh) / 2 : Math.max(Hv - sh, Math.min(0, z.y));
+    }
+    function reset() {
+      z.on = false; z.drag = false; z.moved = false;
+      $(imgId).classList.remove("zoomed", "dragging");
+      $(stageId).classList.remove("zoomed");
+      $(imgId).style.transform = "";
+    }
+    function inAt(cx, cy) {
+      const img = $(imgId), st = $(stageId);
+      const r = img.getBoundingClientRect();
+      const px = (cx - r.left) / r.width, py = (cy - r.top) / r.height;
+      z.on = true;
+      img.classList.add("zoomed"); st.classList.add("zoomed");
+      z.x = st.clientWidth / 2 - px * img.offsetWidth * z.s;
+      z.y = st.clientHeight / 2 - py * img.offsetHeight * z.s;
+      clamp(); apply();
+    }
+    return {
+      reset,
+      toggle(e) { if (z.moved) { z.moved = false; return; } if (z.on) reset(); else inAt(e.clientX, e.clientY); },
+      down(e) { if (!z.on) return; z.drag = true; z.moved = false; z.sx = e.clientX; z.sy = e.clientY; $(imgId).classList.add("dragging"); try { e.target.setPointerCapture(e.pointerId); } catch { /* ignore */ } },
+      move(e) { if (!z.drag) return; const dx = e.clientX - z.sx, dy = e.clientY - z.sy; if (Math.abs(dx) + Math.abs(dy) > 3) z.moved = true; z.x += dx; z.y += dy; z.sx = e.clientX; z.sy = e.clientY; clamp(); apply(); },
+      up() { z.drag = false; $(imgId).classList.remove("dragging"); },
+    };
   }
-  function clampZoom() {
-    const img = $("detail-img"), st = $("detail-stage");
-    const sw = img.offsetWidth * zoom.s, sh = img.offsetHeight * zoom.s;
-    const Wv = st.clientWidth, Hv = st.clientHeight;
-    zoom.x = sw <= Wv ? (Wv - sw) / 2 : Math.max(Wv - sw, Math.min(0, zoom.x));
-    zoom.y = sh <= Hv ? (Hv - sh) / 2 : Math.max(Hv - sh, Math.min(0, zoom.y));
-  }
-  function resetZoom() {
-    zoom.on = false; zoom.drag = false; zoom.moved = false;
-    const img = $("detail-img");
-    img.classList.remove("zoomed", "dragging");
-    $("detail-stage").classList.remove("zoomed");
-    img.style.transform = "";
-  }
-  function zoomInAt(clientX, clientY) {
-    const img = $("detail-img"), st = $("detail-stage");
-    const r = img.getBoundingClientRect();
-    const px = (clientX - r.left) / r.width, py = (clientY - r.top) / r.height;
-    zoom.on = true;
-    img.classList.add("zoomed"); st.classList.add("zoomed");
-    const w = img.offsetWidth, h = img.offsetHeight;
-    zoom.x = st.clientWidth / 2 - px * w * zoom.s;
-    zoom.y = st.clientHeight / 2 - py * h * zoom.s;
-    clampZoom(); applyZoom();
-  }
-  function toggleZoom(e) {
-    if (zoom.moved) { zoom.moved = false; return; }
-    if (zoom.on) resetZoom(); else zoomInAt(e.clientX, e.clientY);
-  }
-  function zoomPanStart(e) {
-    if (!zoom.on) return;
-    zoom.drag = true; zoom.moved = false; zoom.sx = e.clientX; zoom.sy = e.clientY;
-    $("detail-img").classList.add("dragging");
-    try { e.target.setPointerCapture(e.pointerId); } catch { /* ignore */ }
-  }
-  function zoomPanMove(e) {
-    if (!zoom.drag) return;
-    const dx = e.clientX - zoom.sx, dy = e.clientY - zoom.sy;
-    if (Math.abs(dx) + Math.abs(dy) > 3) zoom.moved = true;
-    zoom.x += dx; zoom.y += dy; zoom.sx = e.clientX; zoom.sy = e.clientY;
-    clampZoom(); applyZoom();
-  }
-  function zoomPanEnd() { zoom.drag = false; $("detail-img").classList.remove("dragging"); }
+  const detailZoom = makeZoomer("detail-img", "detail-stage");
+  const lbZoom = makeZoomer("lb-img", "lb-stage");
   function closeDetail() {
     openDetailId = null;
     $("detail-overlay").classList.remove("open");
-    resetZoom();
+    detailZoom.reset();
   }
 
   /* ---- cart open/close ---- */
@@ -446,11 +436,11 @@
     $("detail-overlay").addEventListener("click", (e) => { if (e.target.id === "detail-overlay") closeDetail(); });
     $("detail-prev").addEventListener("click", (e) => { e.stopPropagation(); detailNav(-1); });
     $("detail-next").addEventListener("click", (e) => { e.stopPropagation(); detailNav(1); });
-    $("detail-img").addEventListener("click", (e) => { e.stopPropagation(); toggleZoom(e); });
-    $("detail-img").addEventListener("pointerdown", (e) => { e.stopPropagation(); zoomPanStart(e); });
-    $("detail-img").addEventListener("pointermove", zoomPanMove);
-    $("detail-img").addEventListener("pointerup", zoomPanEnd);
-    $("detail-img").addEventListener("pointercancel", zoomPanEnd);
+    $("detail-img").addEventListener("click", (e) => { e.stopPropagation(); detailZoom.toggle(e); });
+    $("detail-img").addEventListener("pointerdown", (e) => { e.stopPropagation(); detailZoom.down(e); });
+    $("detail-img").addEventListener("pointermove", detailZoom.move);
+    $("detail-img").addEventListener("pointerup", detailZoom.up);
+    $("detail-img").addEventListener("pointercancel", detailZoom.up);
     // Blessing thumbnails → open lightbox (works in popup and home showcase)
     document.addEventListener("click", (e) => {
       const th = e.target.closest(".bless-thumb");
@@ -462,6 +452,11 @@
     $("lb-close").addEventListener("click", closeLightbox);
     $("lb-prev").addEventListener("click", (e) => { e.stopPropagation(); lbNav(-1); });
     $("lb-next").addEventListener("click", (e) => { e.stopPropagation(); lbNav(1); });
+    $("lb-img").addEventListener("click", (e) => { e.stopPropagation(); lbZoom.toggle(e); });
+    $("lb-img").addEventListener("pointerdown", (e) => { e.stopPropagation(); lbZoom.down(e); });
+    $("lb-img").addEventListener("pointermove", lbZoom.move);
+    $("lb-img").addEventListener("pointerup", lbZoom.up);
+    $("lb-img").addEventListener("pointercancel", lbZoom.up);
     $("lightbox").addEventListener("click", (e) => {
       if (e.target.id === "lightbox" || e.target.classList.contains("lb-stage")) closeLightbox();
     });
@@ -496,6 +491,7 @@
   function openLightbox(set, idx) { lbSet = set; lbIdx = idx; paintLightbox(); $("lightbox").classList.add("open"); }
   function paintLightbox() {
     const it = lbSet[lbIdx]; if (!it) return;
+    lbZoom.reset();
     $("lb-img").src = it.img;
     $("lb-caption").textContent = t(it.by);
     const multi = lbSet.length > 1;
@@ -503,7 +499,7 @@
     $("lb-next").style.display = multi ? "" : "none";
   }
   function lbNav(dir) { if (lbSet.length < 2) return; lbIdx = (lbIdx + dir + lbSet.length) % lbSet.length; paintLightbox(); }
-  function closeLightbox() { $("lightbox").classList.remove("open"); $("lb-img").src = ""; }
+  function closeLightbox() { lbZoom.reset(); $("lightbox").classList.remove("open"); $("lb-img").src = ""; }
 
   // Gentle fade-up when the About card scrolls into view (progressive enhancement).
   function revealAbout() {
