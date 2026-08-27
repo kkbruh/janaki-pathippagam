@@ -18,8 +18,8 @@
 
   /* Interface words in both languages. (Book/author content is in config.js.) */
   const STRINGS = {
-    navBooks:    { en: "Books", ta: "நூல்கள்" },
-    navAbout:    { en: "About", ta: "பற்றி" },
+    navBooks:    { en: "About Janaki Pathipagam Books", ta: "ஜானகி பதிப்பகம் நூல்கள்" },
+    navAbout:    { en: "About the Author", ta: "நூலாசிரியர் பற்றிய குறிப்பு" },
     aboutHeading:{ en: "About the Author", ta: "நூலாசிரியர் பற்றி" },
     heroAbout:   { en: "About the Author  ↓", ta: "நூலாசிரியர் பற்றி  ↓" },
     heroSub:     { en: "Browse the collection below. Add the books you want, then send your order over WhatsApp or email.",
