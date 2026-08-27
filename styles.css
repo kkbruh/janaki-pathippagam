@@ -118,20 +118,15 @@ img { max-width: 100%; display: block; }
 /* ===== Header ===== */
 .site-header {
   position: sticky; top: 0; z-index: 50;
-  padding: 12px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+  padding: 13px 28px;
   background: var(--maroon);
   color: var(--cream);
   border-bottom: 3px solid var(--gold);
 }
-/* Top tier: brand on the left, language + cart on the right */
-.header-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.header-ctrls { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
-/* Second tier: the section links, on their own tidy row */
-.header-nav {
-  display: flex; align-items: center; gap: 26px;
-  margin-top: 9px; padding-top: 9px;
-  border-top: 1px solid rgba(199,154,60,0.28);
-}
+/* brand left, short nav + language + cart on the right — one line */
+.header-actions { display: flex; align-items: center; gap: 16px; margin-left: auto; flex-wrap: wrap; }
 .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .brand-logo { height: 52px; width: auto; border-radius: 8px; background: var(--cream); padding: 3px; flex-shrink: 0; }
 .brand-title { margin: 0; font-size: 1.55rem; color: var(--white); }
@@ -506,8 +501,8 @@ img { max-width: 100%; display: block; }
   .brand-logo { height: 30px; flex-shrink: 0; }
   .brand-title { font-size: 0.82rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .brand-tagline { display: none; }
-  .header-ctrls { gap: 6px; }
-  .header-nav { display: none; }
+  .header-actions { gap: 8px; }
+  .nav-link { display: none; }
   .lang-opt { padding: 4px 6px; font-size: 0.7rem; }
   .cart-btn { padding: 4px 7px; font-size: 0.82rem; gap: 3px; }
   .cart-count { min-width: 16px; height: 16px; font-size: 0.66rem; }
